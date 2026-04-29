@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Leo BIGOTE — BTS SIO SISR</title>
+<title>Léo BIGOTÉ — BTS SIO SISR</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -34,7 +34,6 @@
     cursor: none;
   }
 
-  /* CURSOR */
   #cursor {
     width: 12px; height: 12px;
     background: var(--accent);
@@ -57,7 +56,6 @@
     transition: all 0.15s ease;
   }
 
-  /* NOISE OVERLAY */
   body::before {
     content: '';
     position: fixed;
@@ -68,7 +66,6 @@
     opacity: 0.4;
   }
 
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -119,7 +116,6 @@
     letter-spacing: 0.05em;
   }
 
-  /* HERO */
   #accueil {
     min-height: 100vh;
     display: flex;
@@ -128,26 +124,23 @@
     position: relative;
     overflow: hidden;
   }
+  #bg3d {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
   .hero-grid-bg {
     position: absolute;
     inset: 0;
     background-image:
-      linear-gradient(rgba(111,255,176,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(111,255,176,0.04) 1px, transparent 1px);
+      linear-gradient(rgba(111,255,176,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(111,255,176,0.03) 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black, transparent);
-  }
-  .hero-glow {
-    position: absolute;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(111,255,176,0.08) 0%, transparent 70%);
-    top: 50%; left: 30%;
-    transform: translate(-50%, -50%);
-    animation: glowPulse 4s ease-in-out infinite;
-  }
-  @keyframes glowPulse {
-    0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 0.6; }
-    50% { transform: translate(-50%,-50%) scale(1.1); opacity: 1; }
+    z-index: 0;
   }
   .hero-content { position: relative; z-index: 2; max-width: 800px; }
   .hero-tag {
@@ -240,6 +233,7 @@
     color: var(--muted); font-size: 0.75rem; letter-spacing: 0.1em;
     text-transform: uppercase;
     animation: fadeIn 1s 1.5s both;
+    z-index: 2;
   }
   .scroll-line {
     width: 1px; height: 50px;
@@ -252,39 +246,8 @@
     51% { transform: scaleY(1); transform-origin: bottom; }
     100% { transform: scaleY(0); transform-origin: bottom; }
   }
-  .hero-stack {
-    position: absolute;
-    right: 4rem; top: 50%;
-    transform: translateY(-50%);
-    display: flex; flex-direction: column; gap: 1rem;
-    opacity: 0;
-    animation: fadeIn 0.8s 1.2s forwards;
-  }
-  .stack-item {
-    padding: 0.6rem 1rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    font-size: 0.8rem;
-    color: var(--muted);
-    white-space: nowrap;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-  .stack-item::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 2px;
-    background: var(--accent);
-    transform: scaleY(0);
-    transition: transform 0.3s;
-  }
-  .stack-item:hover { color: var(--text); border-color: rgba(111,255,176,0.3); }
-  .stack-item:hover::before { transform: scaleY(1); }
+  .hero-stack { display: none; }
 
-  /* SECTIONS */
   section { padding: 6rem 4rem; position: relative; }
   .section-label {
     font-size: 0.75rem;
@@ -311,7 +274,6 @@
     line-height: 1;
   }
 
-  /* ABOUT */
   #about { background: var(--surface); }
   .about-grid {
     display: grid;
@@ -377,124 +339,38 @@
   }
   .info-block p { color: var(--muted); font-size: 0.9rem; }
 
-  /* COMPETENCES */
-  #competences { max-width: 1200px; margin: 0 auto; }
-  .comp-wrapper { padding: 6rem 4rem; }
-  .comp-grid {
+  .skills-section { padding: 6rem 4rem; background: var(--bg); }
+  .skills-inner { max-width: 1100px; margin: 0 auto; }
+  .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 3rem;
   }
-  .comp-card {
+  .skill-item {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    text-decoration: none;
-    display: block;
-    color: inherit;
-  }
-  .comp-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(111,255,176,0.05), transparent);
-    opacity: 0;
-    transition: opacity 0.4s;
-  }
-  .comp-card:hover { transform: translateY(-6px); border-color: rgba(111,255,176,0.3); box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
-  .comp-card:hover::before { opacity: 1; }
-  .comp-num {
-    font-family: var(--font-display);
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: rgba(111,255,176,0.12);
-    line-height: 1;
-    margin-bottom: 1rem;
-    transition: color 0.3s;
-  }
-  .comp-card:hover .comp-num { color: rgba(111,255,176,0.25); }
-  .comp-name {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.5rem;
-    line-height: 1.3;
-  }
-  .comp-desc { font-size: 0.85rem; color: var(--muted); }
-  .comp-arrow {
-    position: absolute;
-    right: 1.5rem; bottom: 1.5rem;
-    color: var(--accent);
-    font-size: 1.2rem;
-    opacity: 0;
-    transform: translateX(-8px);
+    border-radius: 8px;
+    padding: 1.5rem;
     transition: all 0.3s;
   }
-  .comp-card:hover .comp-arrow { opacity: 1; transform: translateX(0); }
-
-  /* PROJETS */
-  #projets { background: var(--surface); }
-  .projets-inner { max-width: 1100px; margin: 0 auto; }
-  .projet-list { display: flex; flex-direction: column; gap: 1px; }
-  .projet-item {
-    display: grid;
-    grid-template-columns: 80px 1fr auto;
-    align-items: center;
-    gap: 2rem;
-    padding: 2rem 0;
-    border-bottom: 1px solid var(--border);
-    cursor: pointer;
-    transition: all 0.3s;
-    position: relative;
-  }
-  .projet-item::before {
-    content: '';
-    position: absolute;
-    left: -4rem; right: -4rem;
-    top: 0; bottom: 0;
-    background: var(--surface2);
-    opacity: 0;
-    transition: opacity 0.3s;
-    z-index: 0;
-  }
-  .projet-item:hover::before { opacity: 1; }
-  .projet-item > * { position: relative; z-index: 1; }
-  .projet-num {
-    font-family: var(--font-display);
-    font-size: 0.8rem;
-    color: var(--muted);
-    font-weight: 700;
-    letter-spacing: 0.05em;
-  }
-  .projet-info h3 {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-    transition: color 0.3s;
-  }
-  .projet-item:hover .projet-info h3 { color: var(--accent); }
-  .projet-info p { font-size: 0.85rem; color: var(--muted); }
-  .projet-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-end; }
-  .tag {
-    padding: 0.25rem 0.7rem;
-    background: var(--surface2);
-    border: 1px solid var(--border);
+  .skill-item:hover { border-color: rgba(111,255,176,0.3); }
+  .skill-name { font-size: 0.9rem; font-weight: 500; color: var(--text); margin-bottom: 1rem; }
+  .skill-bar {
+    height: 2px;
+    background: var(--border);
     border-radius: 100px;
-    font-size: 0.72rem;
-    color: var(--muted);
-    letter-spacing: 0.03em;
-    transition: all 0.3s;
+    overflow: hidden;
   }
-  .projet-item:hover .tag { border-color: rgba(111,255,176,0.3); color: var(--accent); }
+  .skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 100px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
+  }
 
-  /* BLOCS */
-  #blocs { max-width: 1100px; margin: 0 auto; }
   .blocs-wrapper { padding: 6rem 4rem; }
   .blocs-grid {
     display: grid;
@@ -541,41 +417,60 @@
   .bloc-num { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; margin-bottom: 0.15rem; }
   .bloc-name { font-size: 0.9rem; color: var(--text); font-weight: 500; line-height: 1.3; }
 
-  /* SKILLS */
-  .skills-section { padding: 6rem 4rem; background: var(--bg); }
-  .skills-inner { max-width: 1100px; margin: 0 auto; }
-  .skills-grid {
+  #projets { background: var(--surface); }
+  .projets-inner { max-width: 1100px; margin: 0 auto; }
+  .projet-list { display: flex; flex-direction: column; gap: 1px; }
+  .projet-item {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 3rem;
+    grid-template-columns: 80px 1fr auto;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s;
+    position: relative;
   }
-  .skill-item {
-    background: var(--surface);
+  .projet-item::before {
+    content: '';
+    position: absolute;
+    left: -4rem; right: -4rem;
+    top: 0; bottom: 0;
+    background: var(--surface2);
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 0;
+  }
+  .projet-item:hover::before { opacity: 1; }
+  .projet-item > * { position: relative; z-index: 1; }
+  .projet-num {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .projet-info h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    transition: color 0.3s;
+  }
+  .projet-item:hover .projet-info h3 { color: var(--accent); }
+  .projet-info p { font-size: 0.85rem; color: var(--muted); }
+  .projet-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-end; }
+  .tag {
+    padding: 0.25rem 0.7rem;
+    background: var(--surface2);
     border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.5rem;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.03em;
     transition: all 0.3s;
   }
-  .skill-item:hover { border-color: rgba(111,255,176,0.3); }
-  .skill-name { font-size: 0.9rem; font-weight: 500; color: var(--text); margin-bottom: 1rem; }
-  .skill-bar {
-    height: 2px;
-    background: var(--border);
-    border-radius: 100px;
-    overflow: hidden;
-  }
-  .skill-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    border-radius: 100px;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  .skill-fill.animated { transform: scaleX(1); }
+  .projet-item:hover .tag { border-color: rgba(111,255,176,0.3); color: var(--accent); }
 
-  /* CONTACT */
   #contact {
     padding: 6rem 4rem;
     background: var(--surface);
@@ -614,7 +509,6 @@
   .contact-link.primary { background: var(--accent); color: #0a0a0f; border-color: var(--accent); font-weight: 500; }
   .contact-link.primary:hover { background: transparent; color: var(--accent); }
 
-  /* FOOTER */
   footer {
     padding: 2rem 4rem;
     border-top: 1px solid var(--border);
@@ -625,7 +519,6 @@
     color: var(--muted);
   }
 
-  /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
@@ -634,24 +527,18 @@
     from { opacity: 0; }
     to { opacity: 1; }
   }
-
   .reveal {
     opacity: 0;
     transform: translateY(40px);
     transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
   }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  /* MOBILE */
   @media (max-width: 768px) {
     nav { padding: 1.2rem 1.5rem; }
     .nav-links { display: none; }
-    section, .comp-wrapper, .blocs-wrapper, .skills-section, #contact { padding: 4rem 1.5rem; }
+    section, .blocs-wrapper, .skills-section, #contact { padding: 4rem 1.5rem; }
     #accueil { padding: 7rem 1.5rem 4rem; }
-    .hero-stack { display: none; }
     .about-grid { grid-template-columns: 1fr; gap: 2rem; }
     .projet-item { grid-template-columns: 50px 1fr; }
     .projet-tags { display: none; }
@@ -664,7 +551,6 @@
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 
-<!-- NAV -->
 <nav>
   <a href="#accueil" class="nav-logo">Léo<span>.</span></a>
   <ul class="nav-links">
@@ -677,10 +563,9 @@
   <span class="nav-badge">Disponible • 2026</span>
 </nav>
 
-<!-- HERO -->
 <section id="accueil">
+  <canvas id="bg3d"></canvas>
   <div class="hero-grid-bg"></div>
-  <div class="hero-glow"></div>
   <div class="hero-content">
     <div class="hero-tag">BTS SIO • Option SISR • EFREI Paris</div>
     <h1 class="hero-name">
@@ -697,69 +582,31 @@
       <a href="https://www.linkedin.com/in/leo-bigote/" class="btn-outline" target="_blank">LinkedIn</a>
     </div>
   </div>
-  <div class="hero-stack">
-    <div class="stack-item">Windows Server 2019</div>
-    <div class="stack-item">AD DS / DNS</div>
-    <div class="stack-item">VirtualBox</div>
-    <div class="stack-item">TCP/IP</div>
-  </div>
   <div class="hero-scroll">
     <div class="scroll-line"></div>
     Scroll
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="about-grid">
     <div class="about-text reveal">
       <div class="section-label">À propos</div>
       <h2 class="section-title">Qui suis-je ?</h2>
-      <p>
-        Étudiant en <strong>BTS SIO option SISR</strong> à l'EFREI Paris, je me spécialise dans
-        la gestion et l'administration d'infrastructures informatiques.
-      </p>
-      <p>
-        Mon parcours m'a permis de développer une expertise en <strong>Active Directory</strong>,
-        en <strong>virtualisation</strong> et en <strong>administration réseau</strong>.
-        J'ai notamment mis en place un domaine AD complet avec gestion des utilisateurs, groupes et OU.
-      </p>
-      <p>
-        <strong>Objectif</strong> : décrocher un stage ou une alternance en administration
-        systèmes & réseaux afin d'approfondir mes compétences sur le terrain.
-      </p>
+      <p>Étudiant en <strong>BTS SIO option SISR</strong> à l'EFREI Paris, je me spécialise dans la gestion et l'administration d'infrastructures informatiques.</p>
+      <p>Mon parcours m'a permis de développer une expertise en <strong>Active Directory</strong>, en <strong>virtualisation</strong> et en <strong>administration réseau</strong>. J'ai notamment mis en place un domaine AD complet avec gestion des utilisateurs, groupes et OU.</p>
+      <p><strong>Objectif</strong> : décrocher un stage ou une alternance en administration systèmes & réseaux.</p>
       <div class="about-stats">
-        <div class="stat-card">
-          <div class="stat-num">6</div>
-          <div class="stat-label">Blocs de compétences</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">3+</div>
-          <div class="stat-label">Projets réalisés</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">1</div>
-          <div class="stat-label">An d'études</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">IDF</div>
-          <div class="stat-label">Mobilité totale</div>
-        </div>
+        <div class="stat-card"><div class="stat-num">6</div><div class="stat-label">Blocs de compétences</div></div>
+        <div class="stat-card"><div class="stat-num">3+</div><div class="stat-label">Projets réalisés</div></div>
+        <div class="stat-card"><div class="stat-num">1</div><div class="stat-label">An d'études</div></div>
+        <div class="stat-card"><div class="stat-num">IDF</div><div class="stat-label">Mobilité totale</div></div>
       </div>
     </div>
     <div class="about-info reveal">
-      <div class="info-block">
-        <h4>Formation</h4>
-        <p>BTS SIO Option SISR — EFREI Paris</p>
-      </div>
-      <div class="info-block">
-        <h4>Disponibilité</h4>
-        <p>Stage / Alternance à partir de 2026</p>
-      </div>
-      <div class="info-block">
-        <h4>Localisation</h4>
-        <p>Île-de-France — Mobilité totale</p>
-      </div>
+      <div class="info-block"><h4>Formation</h4><p>BTS SIO Option SISR — EFREI Paris</p></div>
+      <div class="info-block"><h4>Disponibilité</h4><p>Stage / Alternance à partir de 2026</p></div>
+      <div class="info-block"><h4>Localisation</h4><p>Île-de-France — Mobilité totale</p></div>
       <div class="info-block">
         <h4>Liens</h4>
         <p>
@@ -774,91 +621,52 @@
   </div>
 </section>
 
-<!-- COMPETENCES TECHNIQUES -->
-<div class="skills-section">
+<div class="skills-section" id="competences">
   <div class="skills-inner">
     <div class="section-label reveal">Stack technique</div>
     <h2 class="section-title reveal">Compétences</h2>
     <div class="skills-grid">
-      <div class="skill-item reveal">
-        <div class="skill-name">Windows Server / AD DS</div>
-        <div class="skill-bar"><div class="skill-fill" data-width="0.85"></div></div>
-      </div>
-      <div class="skill-item reveal">
-        <div class="skill-name">Gestion utilisateurs / GPO</div>
-        <div class="skill-bar"><div class="skill-fill" data-width="0.80"></div></div>
-      </div>
-      <div class="skill-item reveal">
-        <div class="skill-name">TCP/IP — Réseaux</div>
-        <div class="skill-bar"><div class="skill-fill" data-width="0.75"></div></div>
-      </div>
-      <div class="skill-item reveal">
-        <div class="skill-name">Virtualisation (VirtualBox)</div>
-        <div class="skill-bar"><div class="skill-fill" data-width="0.80"></div></div>
-      </div>
-      <div class="skill-item reveal">
-        <div class="skill-name">DNS / DHCP</div>
-        <div class="skill-bar"><div class="skill-fill" data-width="0.70"></div></div>
-      </div>
-      <div class="skill-item reveal">
-        <div class="skill-name">Sécurité & bonnes pratiques</div>
-        <div class="skill-bar"><div class="skill-fill" data-width="0.65"></div></div>
-      </div>
+      <div class="skill-item reveal"><div class="skill-name">Windows Server / AD DS</div><div class="skill-bar"><div class="skill-fill" data-width="0.85"></div></div></div>
+      <div class="skill-item reveal"><div class="skill-name">Gestion utilisateurs / GPO</div><div class="skill-bar"><div class="skill-fill" data-width="0.80"></div></div></div>
+      <div class="skill-item reveal"><div class="skill-name">TCP/IP — Réseaux</div><div class="skill-bar"><div class="skill-fill" data-width="0.75"></div></div></div>
+      <div class="skill-item reveal"><div class="skill-name">Virtualisation (VirtualBox)</div><div class="skill-bar"><div class="skill-fill" data-width="0.80"></div></div></div>
+      <div class="skill-item reveal"><div class="skill-name">DNS / DHCP</div><div class="skill-bar"><div class="skill-fill" data-width="0.70"></div></div></div>
+      <div class="skill-item reveal"><div class="skill-name">Sécurité & bonnes pratiques</div><div class="skill-bar"><div class="skill-fill" data-width="0.65"></div></div></div>
     </div>
   </div>
 </div>
 
-<!-- BLOCS DE COMPETENCES -->
 <div class="blocs-wrapper" id="blocs">
   <div class="section-label reveal">Documentation</div>
   <h2 class="section-title reveal">Blocs de compétences</h2>
   <div class="blocs-grid">
     <a href="https://leo121205.github.io/bloc_de_competences/gerer-patrimoine-informatique.html" class="bloc-card reveal">
       <div class="bloc-icon">B1</div>
-      <div class="bloc-info">
-        <div class="bloc-num">Bloc 1</div>
-        <div class="bloc-name">Gérer le patrimoine informatique</div>
-      </div>
+      <div class="bloc-info"><div class="bloc-num">Bloc 1</div><div class="bloc-name">Gérer le patrimoine informatique</div></div>
     </a>
     <a href="https://leo121205.github.io/bloc_de_competences/repondre-incidents-demandes.html" class="bloc-card reveal">
       <div class="bloc-icon">B2</div>
-      <div class="bloc-info">
-        <div class="bloc-num">Bloc 2</div>
-        <div class="bloc-name">Répondre aux incidents et aux demandes</div>
-      </div>
+      <div class="bloc-info"><div class="bloc-num">Bloc 2</div><div class="bloc-name">Répondre aux incidents et aux demandes</div></div>
     </a>
     <a href="https://leo121205.github.io/bloc_de_competences/developper-presence-en-ligne.html" class="bloc-card reveal">
       <div class="bloc-icon">B3</div>
-      <div class="bloc-info">
-        <div class="bloc-num">Bloc 3</div>
-        <div class="bloc-name">Développer la présence en ligne</div>
-      </div>
+      <div class="bloc-info"><div class="bloc-num">Bloc 3</div><div class="bloc-name">Développer la présence en ligne</div></div>
     </a>
     <a href="https://leo121205.github.io/bloc_de_competences/travailler-en-mode-projet.html" class="bloc-card reveal">
       <div class="bloc-icon">B4</div>
-      <div class="bloc-info">
-        <div class="bloc-num">Bloc 4</div>
-        <div class="bloc-name">Travailler en mode projet</div>
-      </div>
+      <div class="bloc-info"><div class="bloc-num">Bloc 4</div><div class="bloc-name">Travailler en mode projet</div></div>
     </a>
     <a href="https://leo121205.github.io/bloc_de_competences/mettre-a-disposition-un-service.html" class="bloc-card reveal">
       <div class="bloc-icon">B5</div>
-      <div class="bloc-info">
-        <div class="bloc-num">Bloc 5</div>
-        <div class="bloc-name">Mettre à disposition un service</div>
-      </div>
+      <div class="bloc-info"><div class="bloc-num">Bloc 5</div><div class="bloc-name">Mettre à disposition un service</div></div>
     </a>
     <a href="https://leo121205.github.io/bloc_de_competences/organiser-developpement-professionnel.html" class="bloc-card reveal">
       <div class="bloc-icon">B6</div>
-      <div class="bloc-info">
-        <div class="bloc-num">Bloc 6</div>
-        <div class="bloc-name">Organiser son développement professionnel</div>
-      </div>
+      <div class="bloc-info"><div class="bloc-num">Bloc 6</div><div class="bloc-name">Organiser son développement professionnel</div></div>
     </a>
   </div>
 </div>
 
-<!-- PROJETS -->
 <section id="projets">
   <div class="projets-inner">
     <div class="section-label reveal">Réalisations</div>
@@ -903,15 +711,11 @@
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
     <div class="section-label" style="justify-content:center;">Contact</div>
     <h2 class="contact-title">Travaillons<br><span>ensemble.</span></h2>
-    <p class="contact-sub">
-      Je recherche un stage ou une alternance en administration systèmes & réseaux.
-      N'hésitez pas à me contacter !
-    </p>
+    <p class="contact-sub">Je recherche un stage ou une alternance en administration systèmes & réseaux. N'hésitez pas à me contacter !</p>
     <div class="contact-links">
       <a href="mailto:leopakiam.bigote@gmail.com" class="contact-link primary">✉ leopakiam.bigote@gmail.com</a>
       <a href="https://www.linkedin.com/in/leo-bigote/" target="_blank" class="contact-link">LinkedIn</a>
@@ -920,14 +724,12 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <span>© 2026 Léo BIGOTÉ — BTS SIO SISR</span>
   <span>Hébergé sur GitHub Pages</span>
 </footer>
 
 <script>
-  // CUSTOM CURSOR
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursor-ring');
   let mx = 0, my = 0, rx = 0, ry = 0;
@@ -944,47 +746,37 @@
     requestAnimationFrame(animRing);
   }
   animRing();
-  document.querySelectorAll('a, button, .comp-card, .bloc-card, .projet-item').forEach(el => {
+  document.querySelectorAll('a, button, .bloc-card, .projet-item').forEach(el => {
     el.addEventListener('mouseenter', () => {
-      cursor.style.width = '20px';
-      cursor.style.height = '20px';
-      ring.style.width = '60px';
-      ring.style.height = '60px';
+      cursor.style.width = '20px'; cursor.style.height = '20px';
+      ring.style.width = '60px'; ring.style.height = '60px';
     });
     el.addEventListener('mouseleave', () => {
-      cursor.style.width = '12px';
-      cursor.style.height = '12px';
-      ring.style.width = '40px';
-      ring.style.height = '40px';
+      cursor.style.width = '12px'; cursor.style.height = '12px';
+      ring.style.width = '40px'; ring.style.height = '40px';
     });
   });
 
-  // SCROLL REVEAL
   const revealEls = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver(entries => {
-    entries.forEach((entry, i) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-          // Animate skill bars
-          const bar = entry.target.querySelector('.skill-fill');
-          if (bar) {
-            const w = parseFloat(bar.dataset.width);
-            bar.style.transform = `scaleX(${w})`;
-          }
-        }, 80);
+        entry.target.classList.add('visible');
+        const bar = entry.target.querySelector('.skill-fill');
+        if (bar) {
+          const w = parseFloat(bar.dataset.width);
+          bar.style.transform = `scaleX(${w})`;
+        }
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.15 });
   revealEls.forEach(el => observer.observe(el));
 
-  // STAGGER reveals in grids
-  document.querySelectorAll('.comp-grid .comp-card, .blocs-grid .bloc-card, .skills-grid .skill-item').forEach((el, i) => {
+  document.querySelectorAll('.blocs-grid .bloc-card, .skills-grid .skill-item').forEach((el, i) => {
     el.style.transitionDelay = (i * 0.08) + 's';
   });
 
-  // NAV active state
   const sections = document.querySelectorAll('section[id], div[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
@@ -997,5 +789,6 @@
     });
   });
 </script>
+<script src="bg3d.js"></script>
 </body>
 </html>
