@@ -27,7 +27,7 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-right">
-    <span class="nav-badge">Disponible • 2026</span>
+    <span class="nav-badge" data-i18n="nav.badge">Disponible • 2026</span>
     <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu">
       <span></span><span></span><span></span>
     </button>
@@ -47,17 +47,17 @@
   <canvas id="bg3d"></canvas>
   <div class="hero-grid-bg"></div>
   <div class="hero-content">
-    <div class="hero-tag">BTS SIO • Option SISR • EFREI Paris</div>
+    <div class="hero-tag" data-i18n="hero.tag">BTS SIO • Option SISR • EFREI Paris</div>
     <h1 class="hero-name">
       <div>LEO</div>
       <div class="line2">BIGOTE</div>
     </h1>
-    <p class="hero-sub">
+    <p class="hero-sub" data-i18n-html="hero.sub">
       Étudiant en BTS SIO SISR passionné par l'<strong>administration systèmes & réseaux</strong>, la <strong>cybersécurité</strong> et le cloud. Stage confirmé à l'<strong>Université Paris-Saclay</strong> — en recherche d'<strong>alternance</strong>.
     </p>
     <div class="hero-actions">
-      <a href="projets.html" class="btn-primary"><i class="fa-solid fa-folder-open"></i> <span>Voir mes projets</span></a>
-      <a href="documents/CV Leo Alternance 2026.pdf" class="btn-download" target="_blank"><i class="fa-solid fa-file-arrow-down"></i> Télécharger mon CV</a>
+      <a href="projets.html" class="btn-primary"><i class="fa-solid fa-folder-open"></i> <span data-i18n="hero.btn.projects">Voir mes projets</span></a>
+      <a href="viewer.html?doc=cv" class="btn-download" target="_blank"><i class="fa-solid fa-file-arrow-down"></i> <span data-i18n="hero.btn.cv">Télécharger mon CV</span></a>
       <a href="https://www.linkedin.com/in/leo-bigote/" class="btn-outline" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
     </div>
   </div>
@@ -71,44 +71,38 @@
 <section id="about">
   <div class="about-grid">
     <div class="about-text reveal">
-      <div class="section-label">À propos</div>
-      <h2 class="section-title">Qui suis-je ?</h2>
+      <div class="section-label" data-i18n="about.label">À propos</div>
+      <h2 class="section-title" data-i18n="about.title">Qui suis-je ?</h2>
 
-      <!-- Photo : remplacer le bloc placeholder par <img src="images/photo.jpg" alt="Leo BIGOTE" class="about-photo"> -->
-      <div class="about-photo-placeholder">
-        <i class="fa-solid fa-user"></i>
-        <span>Ajouter ta photo ici<br><small>Remplacer ce bloc par &lt;img class="about-photo"&gt;</small></span>
-      </div>
-
-      <p>Étudiant en <strong>BTS SIO option SISR</strong> à l'EFREI Paris, je me spécialise dans la gestion et l'administration d'infrastructures informatiques, incluant les environnements <strong>Windows Server, Linux Debian, Cisco</strong> et <strong>Azure</strong>. J'ai réalisé un stage en tant que <strong>Technicien IT</strong> à l'<strong>Université Paris-Saclay</strong>.</p>
-      <p>Mon parcours m'a permis de développer une expertise en <strong>Active Directory</strong>, en <strong>virtualisation</strong> (VirtualBox, VMware), en <strong>administration réseau</strong> (VLAN, routage, Wi-Fi) et en <strong>cybersécurité</strong> (MITM, SQLi, XSS). J'ai également déployé <strong>GLPI sur Azure</strong> pour la gestion de parc informatique, avec automatisation des sauvegardes vers Google Drive.</p>
-      <p><strong>Objectif</strong> : décrocher une alternance (12 mois, rythme 2j école / 3j entreprise) en administration systèmes & réseaux / cybersécurité.</p>
+      <p data-i18n-html="about.p1">Étudiant en <strong>BTS SIO option SISR</strong> à l'EFREI Paris, je me spécialise dans la gestion et l'administration d'infrastructures informatiques, incluant les environnements <strong>Windows Server, Linux Debian, Cisco</strong> et <strong>Azure</strong>. J'ai réalisé un stage en tant que <strong>Technicien IT</strong> à l'<strong>Université Paris-Saclay</strong>.</p>
+      <p data-i18n-html="about.p2">Mon parcours m'a permis de développer une expertise en <strong>Active Directory</strong>, en <strong>virtualisation</strong> (VirtualBox, VMware), en <strong>administration réseau</strong> (VLAN, routage, Wi-Fi) et en <strong>cybersécurité</strong> (MITM, SQLi, XSS). J'ai également déployé <strong>GLPI sur Azure</strong> pour la gestion de parc informatique, avec automatisation des sauvegardes vers Google Drive.</p>
+      <p data-i18n-html="about.p3"><strong>Objectif</strong> : décrocher une alternance (12 mois, rythme 2j école / 3j entreprise) en administration systèmes & réseaux / cybersécurité.</p>
       <div class="about-stats">
-        <div class="stat-card"><div class="stat-num">10</div><div class="stat-label">Projets réalisés</div></div>
-        <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">Compétences C</div></div>
-        <div class="stat-card"><div class="stat-num">1</div><div class="stat-label">Stage confirmé</div></div>
-        <div class="stat-card"><div class="stat-num">IDF</div><div class="stat-label">Mobilité totale</div></div>
+        <div class="stat-card"><div class="stat-num">10</div><div class="stat-label" data-i18n="about.stat.projects">Projets réalisés</div></div>
+        <div class="stat-card"><div class="stat-num">5</div><div class="stat-label" data-i18n="about.stat.skills">Compétences C</div></div>
+        <div class="stat-card"><div class="stat-num">1</div><div class="stat-label" data-i18n="about.stat.internship">Stage confirmé</div></div>
+        <div class="stat-card"><div class="stat-num">IDF</div><div class="stat-label" data-i18n="about.stat.mobility">Mobilité totale</div></div>
       </div>
     </div>
     <div class="about-info reveal">
       <div class="info-block">
-        <h4><i class="fa-solid fa-graduation-cap"></i> Formation</h4>
-        <p>BTS SIO Option SISR — EFREI Paris</p>
+        <h4><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="info.training">Formation</span></h4>
+        <p data-i18n="info.training.val">BTS SIO Option SISR — EFREI Paris</p>
       </div>
       <div class="info-block">
-        <h4><i class="fa-solid fa-calendar-check"></i> Disponibilité</h4>
-        <p>Alternance — 12 mois · Rythme 2j école / 3j entreprise</p>
+        <h4><i class="fa-solid fa-calendar-check"></i> <span data-i18n="info.avail">Disponibilité</span></h4>
+        <p data-i18n="info.avail.val">Alternance — 12 mois · Rythme 2j école / 3j entreprise</p>
       </div>
       <div class="info-block">
-        <h4><i class="fa-solid fa-location-dot"></i> Localisation</h4>
-        <p>Paris, France — Mobilité totale IDF</p>
+        <h4><i class="fa-solid fa-location-dot"></i> <span data-i18n="info.location">Localisation</span></h4>
+        <p data-i18n="info.location.val">Paris, France — Mobilité totale IDF</p>
       </div>
       <div class="info-block">
-        <h4><i class="fa-solid fa-microchip"></i> Stack technique</h4>
+        <h4><i class="fa-solid fa-microchip"></i> <span data-i18n="info.stack">Stack technique</span></h4>
         <p>Windows Server · Linux Debian · Cisco · Azure · GLPI · VirtualBox · VMware · Active Directory · Python · Bash · PowerShell</p>
       </div>
       <div class="info-block">
-        <h4><i class="fa-solid fa-link"></i> Liens</h4>
+        <h4><i class="fa-solid fa-link"></i> <span data-i18n="info.links">Liens</span></h4>
         <p>
           <a href="https://linkedin.com/in/leo-bigote" target="_blank">LinkedIn</a>
           &nbsp;·&nbsp;
@@ -124,8 +118,8 @@
 <!-- PROJETS FEATURED -->
 <section id="projets">
   <div class="projets-inner">
-    <div class="section-label reveal">Réalisations</div>
-    <h2 class="section-title reveal">Projets récents</h2>
+    <div class="section-label reveal" data-i18n="projects.label">Réalisations</div>
+    <h2 class="section-title reveal" data-i18n="projects.title">Projets récents</h2>
     <div class="projet-list">
 
       <a href="projet-ad.html" class="projet-item reveal">
@@ -200,7 +194,7 @@
 
     </div>
     <div style="text-align:center; margin-top:3rem;">
-      <a href="projets.html" class="btn-outline"><i class="fa-solid fa-grid-2"></i> Voir tous les projets (10)</a>
+      <a href="projets.html" class="btn-outline"><i class="fa-solid fa-grid-2"></i> <span data-i18n="projects.btn">Voir tous les projets (10)</span></a>
     </div>
   </div>
 </section>
@@ -208,11 +202,11 @@
 <!-- COMPÉTENCES C -->
 <div class="blocs-wrapper" id="blocs">
   <div class="section-inner">
-    <div class="section-label reveal">Documentation BTS SIO</div>
-    <h2 class="section-title reveal">Compétences professionnelles</h2>
+    <div class="section-label reveal" data-i18n="blocs.label">Documentation BTS SIO</div>
+    <h2 class="section-title reveal" data-i18n="blocs.title">Compétences professionnelles</h2>
     <div class="blocs-grid">
 
-      <a href="documents/C1_Recensement_Ressources_Numeriques.pdf" class="bloc-card reveal" target="_blank">
+      <a href="viewer.html?doc=c1" class="bloc-card reveal" target="_blank">
         <div class="bloc-icon">C1</div>
         <div class="bloc-info">
           <div class="bloc-num">Compétence C1</div>
@@ -222,7 +216,7 @@
         <i class="fa-solid fa-arrow-down-to-bracket bloc-arrow"></i>
       </a>
 
-      <a href="documents/C7_Collecte_Suivi_Demandes.pdf" class="bloc-card reveal" target="_blank">
+      <a href="viewer.html?doc=c7" class="bloc-card reveal" target="_blank">
         <div class="bloc-icon">C7</div>
         <div class="bloc-info">
           <div class="bloc-num">Compétence C7</div>
@@ -232,7 +226,7 @@
         <i class="fa-solid fa-arrow-down-to-bracket bloc-arrow"></i>
       </a>
 
-      <a href="documents/C11_Referencement_Services_En_Ligne.pdf" class="bloc-card reveal" target="_blank">
+      <a href="viewer.html?doc=c11" class="bloc-card reveal" target="_blank">
         <div class="bloc-icon">C11</div>
         <div class="bloc-info">
           <div class="bloc-num">Compétence C11</div>
@@ -242,7 +236,7 @@
         <i class="fa-solid fa-arrow-down-to-bracket bloc-arrow"></i>
       </a>
 
-      <a href="documents/C14_Planification_Activites.pdf" class="bloc-card reveal" target="_blank">
+      <a href="viewer.html?doc=c14" class="bloc-card reveal" target="_blank">
         <div class="bloc-icon">C14</div>
         <div class="bloc-info">
           <div class="bloc-num">Compétence C14</div>
@@ -252,7 +246,7 @@
         <i class="fa-solid fa-arrow-down-to-bracket bloc-arrow"></i>
       </a>
 
-      <a href="documents/C17_Deploiement_Service.pdf" class="bloc-card reveal" target="_blank">
+      <a href="viewer.html?doc=c17" class="bloc-card reveal" target="_blank">
         <div class="bloc-icon">C17</div>
         <div class="bloc-info">
           <div class="bloc-num">Compétence C17</div>
@@ -262,7 +256,7 @@
         <i class="fa-solid fa-arrow-down-to-bracket bloc-arrow"></i>
       </a>
 
-      <a href="documents/Tableau de synthèse.pdf" class="bloc-card reveal" target="_blank">
+      <a href="viewer.html?doc=synthese" class="bloc-card reveal" target="_blank">
         <div class="bloc-icon"><i class="fa-solid fa-table-list" style="font-size:1rem;"></i></div>
         <div class="bloc-info">
           <div class="bloc-num">Document de synthèse</div>
@@ -279,15 +273,37 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
-    <div class="section-label" style="justify-content:center;">Contact</div>
-    <h2 class="contact-title">Travaillons<br><span>ensemble.</span></h2>
-    <p class="contact-sub">Je recherche une alternance (12 mois, 2j école / 3j entreprise) en administration systèmes & réseaux / cybersécurité. N'hésitez pas à me contacter !</p>
+    <div class="section-label" style="justify-content:center;" data-i18n="contact.label">Contact</div>
+    <h2 class="contact-title"><span data-i18n="contact.title">Travaillons</span><br><span data-i18n="contact.span">ensemble.</span></h2>
+    <p class="contact-sub" data-i18n="contact.sub">Je recherche une alternance (12 mois, 2j école / 3j entreprise) en administration systèmes & réseaux / cybersécurité. N'hésitez pas à me contacter !</p>
     <div class="contact-links">
       <a href="mailto:leopakiam.bigote@gmail.com" class="contact-link primary"><i class="fa-solid fa-envelope"></i> leopakiam.bigote@gmail.com</a>
+      <a href="tel:0769374657" class="contact-link"><i class="fa-solid fa-phone"></i> 07 69 37 46 57</a>
       <a href="https://www.linkedin.com/in/leo-bigote/" target="_blank" class="contact-link"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
       <a href="https://github.com/Leo121205" target="_blank" class="contact-link"><i class="fa-brands fa-github"></i> GitHub</a>
-      <a href="documents/CV Leo Alternance 2026.pdf" target="_blank" class="contact-link"><i class="fa-solid fa-file-pdf"></i> Mon CV</a>
+      <a href="viewer.html?doc=cv" target="_blank" class="contact-link"><i class="fa-solid fa-file-pdf"></i> Mon CV</a>
     </div>
+
+    <div class="contact-divider"></div>
+    <p class="contact-form-title">Envoyer un message</p>
+    <!-- Formulaire Formspree — remplacer YOUR_FORM_ID sur https://formspree.io -->
+    <form class="contact-form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <input type="text" name="name" class="form-input" data-i18n-ph="contact.form.name" placeholder="Votre nom" required>
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" class="form-input" data-i18n-ph="contact.form.email" placeholder="Votre e-mail" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <textarea name="message" class="form-textarea" data-i18n-ph="contact.form.msg" placeholder="Votre message…" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn-primary form-submit">
+        <i class="fa-solid fa-paper-plane"></i> <span data-i18n="contact.form.send">Envoyer le message</span>
+      </button>
+      <div class="form-msg" id="form-msg"></div>
+    </form>
   </div>
 </section>
 
@@ -302,5 +318,7 @@
 
 <script src="main.js"></script>
 <script src="bg3d.js"></script>
+<script src="i18n.js"></script>
+<script src="chatbot.js"></script>
 </body>
 </html>

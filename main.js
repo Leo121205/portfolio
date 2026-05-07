@@ -66,6 +66,44 @@ document.querySelectorAll(
   el.style.transitionDelay = (i * 0.07) + 's';
 });
 
+// Contact form (Formspree AJAX)
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+  contactForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const btn  = contactForm.querySelector('.form-submit');
+    const msg  = document.getElementById('form-msg');
+    const lang = localStorage.getItem('portfolio-lang') || 'fr';
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+    try {
+      const res = await fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        msg.className = 'form-msg success';
+        msg.textContent = lang === 'en'
+          ? 'Message sent! I\'ll get back to you as soon as possible.'
+          : 'Message envoyé ! Je vous répondrai dès que possible.';
+        contactForm.reset();
+      } else {
+        throw new Error('server');
+      }
+    } catch {
+      msg.className = 'form-msg error';
+      msg.textContent = lang === 'en'
+        ? 'Error sending. Please write to me directly.'
+        : 'Erreur lors de l\'envoi. Écrivez-moi directement.';
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> <span data-i18n="contact.form.send">' +
+        (lang === 'en' ? 'Send message' : 'Envoyer le message') + '</span>';
+    }
+  });
+}
+
 // Nav scroll highlight (index.html only)
 const sections = document.querySelectorAll('section[id], div[id]');
 if (sections.length) {

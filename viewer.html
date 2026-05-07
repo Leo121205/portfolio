@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document — Leo BIGOTE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--surface:#111118;--accent:#6fffb0;--text:#f0f0f5;--muted:#7a7a8c;--border:rgba(255,255,255,0.07);--font-display:'Syne',sans-serif;--font-body:'Instrument Sans',sans-serif}
+html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--font-display)}
+.vbar{
+  position:fixed;top:0;left:0;right:0;height:52px;
+  background:rgba(10,10,15,0.96);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:0.75rem;
+  padding:0 1.5rem;backdrop-filter:blur(20px);z-index:10;
+}
+.vbar-back{
+  color:var(--accent);text-decoration:none;
+  font-size:0.8rem;display:flex;align-items:center;gap:0.4rem;
+  background:none;border:none;cursor:pointer;padding:0;
+  font-family:var(--font-body);transition:opacity 0.2s;flex-shrink:0;
+}
+.vbar-back:hover{opacity:0.75}
+.vbar-sep{color:rgba(255,255,255,0.12);user-select:none;flex-shrink:0}
+.vbar-title{
+  font-size:0.82rem;color:var(--muted);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;
+  font-family:var(--font-body);
+}
+.vbar-dl{
+  color:var(--accent);text-decoration:none;
+  font-size:0.78rem;display:flex;align-items:center;gap:0.4rem;
+  padding:0.3rem 0.85rem;
+  border:1px solid rgba(111,255,176,0.3);
+  border-radius:4px;transition:all 0.2s;white-space:nowrap;
+  font-family:var(--font-body);flex-shrink:0;
+}
+.vbar-dl:hover{background:rgba(111,255,176,0.1)}
+iframe{
+  position:fixed;top:52px;left:0;right:0;bottom:0;
+  width:100%;height:calc(100% - 52px);border:none;
+}
+.vbar-err{
+  position:fixed;top:52px;left:0;right:0;bottom:0;
+  display:none;flex-direction:column;align-items:center;
+  justify-content:center;gap:1.25rem;padding:2rem;
+}
+.vbar-err i{font-size:3rem;color:var(--muted)}
+.vbar-err p{color:var(--muted);font-family:var(--font-body);font-size:0.95rem}
+.vbar-err .vbar-back{font-size:0.9rem;padding:0.6rem 1.25rem;border:1px solid var(--border);border-radius:4px}
+</style>
+</head>
+<body>
+<div class="vbar">
+  <button class="vbar-back" onclick="history.length>1?history.back():location.href='index.html'">
+    <i class="fa-solid fa-arrow-left"></i> Retour
+  </button>
+  <span class="vbar-sep">|</span>
+  <span class="vbar-title" id="vbar-title">Chargement…</span>
+  <a class="vbar-dl" id="vbar-dl" href="#"><i class="fa-solid fa-download"></i> Télécharger</a>
+</div>
+<iframe id="pdf-frame" title="Document PDF"></iframe>
+<div class="vbar-err" id="vbar-err">
+  <i class="fa-solid fa-file-circle-xmark"></i>
+  <p>Document introuvable</p>
+  <button class="vbar-back" onclick="history.length>1?history.back():location.href='index.html'">
+    <i class="fa-solid fa-arrow-left"></i> Retour
+  </button>
+</div>
+
+<script>
+const DOCS = {
+  c1:        { title: 'C1 — Recensement des ressources numériques',  file: 'C1_Recensement_Ressources_Numeriques.pdf' },
+  c7:        { title: 'C7 — Collecte et suivi des demandes',          file: 'C7_Collecte_Suivi_Demandes.pdf' },
+  c11:       { title: 'C11 — Référencement des services en ligne',    file: 'C11_Referencement_Services_En_Ligne.pdf' },
+  c14:       { title: 'C14 — Planification des activités',            file: 'C14_Planification_Activites.pdf' },
+  c17:       { title: 'C17 — Déploiement d\'un service',              file: 'C17_Deploiement_Service.pdf' },
+  synthese:  { title: 'Tableau de synthèse BTS SIO',                  file: 'Tableau de synthèse.pdf' },
+  cv:        { title: 'CV — Leo BIGOTE — Alternance 2026',            file: 'CV Leo Alternance 2026.pdf' },
+  rapport_ad:{ title: 'Rapport — Active Directory efrei.local',       file: 'rapport-ad.pdf' },
+};
+
+const params = new URLSearchParams(location.search);
+const key    = params.get('doc') || '';
+const doc    = DOCS[key];
+
+if (doc) {
+  document.title = doc.title + ' — Leo BIGOTE';
+  document.getElementById('vbar-title').textContent = doc.title;
+  const path = 'documents/' + doc.file;
+  document.getElementById('pdf-frame').src = path;
+  const dl = document.getElementById('vbar-dl');
+  dl.href     = path;
+  dl.download = doc.file;
+} else {
+  document.getElementById('pdf-frame').style.display = 'none';
+  document.getElementById('vbar-err').style.display  = 'flex';
+  document.getElementById('vbar-title').textContent  = 'Document introuvable';
+}
+</script>
+</body>
+</html>
