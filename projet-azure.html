@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud Azure — Leo BIGOTE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<nav>
+  <a href="index.html" class="nav-logo">Leo<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="projets.html" class="active">Projets</a></li>
+    <li><a href="index.html#blocs">Blocs</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-badge">Disponible • 2026</span>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Accueil</a>
+  <a href="competences.html">Compétences</a>
+  <a href="projets.html">Projets</a>
+  <a href="index.html#blocs">Blocs</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <a href="projets.html">Projets</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span>Azure</span>
+    </div>
+    <h1 class="page-title">Infrastructure <span>Cloud Azure</span></h1>
+    <p class="page-subtitle">Déploiement d'une infrastructure hybride sur Microsoft Azure : VMs, réseaux virtuels, Azure AD Connect et sauvegarde cloud.</p>
+    <div class="page-meta">
+      <span class="meta-badge done"><i class="fa-solid fa-circle-check"></i> Terminé</span>
+      <span class="meta-badge"><i class="fa-regular fa-calendar"></i> BTS 1ère année — 2025</span>
+      <span class="meta-badge"><i class="fa-solid fa-tag"></i> Cloud / Azure</span>
+    </div>
+  </div>
+</div>
+
+<div class="report-wrapper">
+  <div class="report-inner">
+    <aside class="report-sidebar">
+      <div class="sidebar-card">
+        <h5>Informations</h5>
+        <div class="sidebar-info-item"><i class="fa-solid fa-calendar"></i><span><strong>Période</strong>BTS 1ère année (2025)</span></div>
+        <div class="sidebar-info-item"><i class="fa-solid fa-clock"></i><span><strong>Durée</strong>3 semaines</span></div>
+        <div class="sidebar-info-item"><i class="fa-solid fa-user"></i><span><strong>Contexte</strong>Projet individuel — Azure for Students</span></div>
+        <div class="sidebar-info-item"><i class="fa-solid fa-circle-check"></i><span><strong>Statut</strong>Terminé ✓</span></div>
+      </div>
+      <div class="sidebar-card">
+        <h5>Technologies</h5>
+        <div class="sidebar-techs">
+          <span class="sidebar-tech">Microsoft Azure</span>
+          <span class="sidebar-tech">Azure AD (Entra ID)</span>
+          <span class="sidebar-tech">Azure VMs</span>
+          <span class="sidebar-tech">Azure VNet</span>
+          <span class="sidebar-tech">Azure Backup</span>
+          <span class="sidebar-tech">Azure Storage</span>
+          <span class="sidebar-tech">Azure Monitor</span>
+        </div>
+      </div>
+      <a href="documents/rapport-azure.pdf" class="btn-download" style="width:100%;justify-content:center;" target="_blank">
+        <i class="fa-solid fa-file-pdf"></i> Télécharger le rapport
+      </a>
+    </aside>
+
+    <div class="report-content">
+      <div class="report-section">
+        <h2><i class="fa-solid fa-circle-info"></i> Contexte & Objectifs</h2>
+        <p>Ce projet explore le déploiement d'une infrastructure <strong>hybride</strong> : une partie des ressources reste sur site (on-premise, Active Directory local efrei.local) et une autre est migrée vers <strong>Microsoft Azure</strong>. L'objectif est de comprendre les concepts fondamentaux du cloud (IaaS, PaaS) et la synchronisation des identités entre l'AD local et Azure AD (Entra ID).</p>
+        <p>Le projet a été réalisé avec un abonnement <strong>Azure for Students</strong> (100€ de crédits gratuits).</p>
+        <h3>Architecture hybride</h3>
+        <ul>
+          <li><strong>On-premise :</strong> DC01-EFREI (AD local), postes utilisateurs Windows 10</li>
+          <li><strong>Azure :</strong> 2 VMs (Windows Server + Linux), VNet, Azure AD, Azure Backup</li>
+          <li><strong>Synchronisation :</strong> Azure AD Connect entre AD local et Entra ID</li>
+        </ul>
+      </div>
+
+      <div class="report-section">
+        <h2><i class="fa-solid fa-list-check"></i> Étapes de réalisation</h2>
+        <ol class="step-list">
+          <li>
+            <div class="step-content">
+              <strong>Configuration du tenant Azure et groupe de ressources</strong>
+              <p>Création du tenant Azure avec le compte EFREI (Azure for Students). Création d'un groupe de ressources "RG-EfreiCorp" dans la région France Central. Configuration des balises (tags) pour le suivi des coûts.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Déploiement du réseau virtuel (VNet)</strong>
+              <p>VNet "VNET-EfreiCorp" : espace d'adressage 10.1.0.0/16. Sous-réseaux : Subnet-Servers (10.1.1.0/24), Subnet-Web (10.1.2.0/24). Groupes de sécurité réseau (NSG) : règles entrantes pour RDP (port 3389) et SSH (port 22) depuis mon IP uniquement.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Déploiement des machines virtuelles Azure</strong>
+              <p>VM-WIN-SRV : Windows Server 2022, taille B2s (2 vCPU, 4 Go RAM), dans Subnet-Servers. VM-LINUX : Ubuntu 22.04 LTS, taille B1s (1 vCPU, 1 Go RAM), dans Subnet-Web. Disques gérés Standard SSD pour les deux VMs.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Configuration Azure AD Connect</strong>
+              <p>Installation d'Azure AD Connect sur DC01-EFREI. Configuration Express (synchronisation complète de l'AD local vers Entra ID). Première synchronisation : 20 utilisateurs et 5 groupes importés dans Azure AD. Test de la SSO (Single Sign-On) avec un compte synchronisé.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Configuration d'Azure Backup</strong>
+              <p>Création d'un coffre Recovery Services "RSV-EfreiCorp". Activation de la sauvegarde pour VM-WIN-SRV : planification quotidienne à 02h00, rétention 7 jours. Test de restauration : snapshot d'un disque de VM en 12 minutes.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Surveillance avec Azure Monitor</strong>
+              <p>Configuration des alertes : CPU > 80%, RAM > 85%, espace disque < 10%. Tableau de bord personnalisé dans le portail Azure avec les métriques clés des VMs. Activation des logs diagnostics vers un compte de stockage.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="report-section">
+        <h2><i class="fa-solid fa-chart-bar"></i> Résultats</h2>
+        <div class="result-grid">
+          <div class="result-card"><i class="fa-solid fa-server"></i><strong>2</strong><span>VMs Azure déployées</span></div>
+          <div class="result-card"><i class="fa-solid fa-users"></i><strong>20</strong><span>Utilisateurs synchronisés</span></div>
+          <div class="result-card"><i class="fa-solid fa-hard-drive"></i><strong>1</strong><span>Backup configuré</span></div>
+          <div class="result-card"><i class="fa-solid fa-bell"></i><strong>3</strong><span>Alertes Monitor</span></div>
+        </div>
+        <p style="margin-top:1.5rem;">L'infrastructure hybride est opérationnelle. Les utilisateurs du domaine local peuvent se connecter aux ressources Azure avec leurs identifiants habituels (via AAD Connect). Azure Monitor surveille en temps réel les métriques des VMs.</p>
+      </div>
+
+      <div class="report-section">
+        <h2><i class="fa-solid fa-lightbulb"></i> Ce que j'ai appris</h2>
+        <div class="learned-grid">
+          <div class="learned-item"><i class="fa-solid fa-check"></i><p>Concepts cloud : IaaS vs PaaS vs SaaS, modèle de responsabilité partagée</p></div>
+          <div class="learned-item"><i class="fa-solid fa-check"></i><p>Architecture réseau Azure : VNet, sous-réseaux, NSG, IP publiques/privées</p></div>
+          <div class="learned-item"><i class="fa-solid fa-check"></i><p>Synchronisation identités AD local ↔ Entra ID avec Azure AD Connect</p></div>
+          <div class="learned-item"><i class="fa-solid fa-check"></i><p>Gestion des coûts Azure et optimisation via les tailles de VMs et les alertes budget</p></div>
+        </div>
+      </div>
+
+      <div class="report-section">
+        <h2><i class="fa-solid fa-file-pdf"></i> Documentation</h2>
+        <div class="placeholder-box">
+          <i class="fa-solid fa-file-arrow-down"></i>
+          <p>Rapport complet PDF à venir</p>
+          <a href="documents/rapport-azure.pdf" class="btn-download" style="margin-top:1rem;display:inline-flex;" target="_blank">
+            <i class="fa-solid fa-file-pdf"></i> Télécharger le rapport complet
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 Leo BIGOTE — BTS SIO SISR</span>
+  <div class="footer-links">
+    <a href="projets.html"><i class="fa-solid fa-arrow-left"></i> Tous les projets</a>
+    <a href="projet-serveur-web.html">Projet suivant <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>

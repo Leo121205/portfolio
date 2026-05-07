@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLPI — Leo BIGOTE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<nav>
+  <a href="index.html" class="nav-logo">Leo<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="projets.html" class="active">Projets</a></li>
+    <li><a href="index.html#blocs">Blocs</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-badge">Disponible • 2026</span>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Accueil</a>
+  <a href="competences.html">Compétences</a>
+  <a href="projets.html">Projets</a>
+  <a href="index.html#blocs">Blocs</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <a href="projets.html">Projets</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span>GLPI</span>
+    </div>
+    <h1 class="page-title">GLPI — Gestion de <span>parc</span></h1>
+    <p class="page-subtitle">Déploiement d'une solution ITSM open source sur Linux Debian pour la gestion des actifs informatiques, l'inventaire et le helpdesk.</p>
+    <div class="page-meta">
+      <span class="meta-badge done"><i class="fa-solid fa-circle-check"></i> Terminé</span>
+      <span class="meta-badge"><i class="fa-regular fa-calendar"></i> BTS 1ère année — 2025</span>
+      <span class="meta-badge"><i class="fa-solid fa-tag"></i> ITSM / Linux</span>
+    </div>
+  </div>
+</div>
+
+<div class="report-wrapper">
+  <div class="report-inner">
+    <aside class="report-sidebar">
+      <div class="sidebar-card">
+        <h5>Informations</h5>
+        <div class="sidebar-info-item"><i class="fa-solid fa-calendar"></i><span><strong>Période</strong>BTS 1ère année (2025)</span></div>
+        <div class="sidebar-info-item"><i class="fa-solid fa-clock"></i><span><strong>Durée</strong>3 semaines</span></div>
+        <div class="sidebar-info-item"><i class="fa-solid fa-user"></i><span><strong>Contexte</strong>Projet individuel</span></div>
+        <div class="sidebar-info-item"><i class="fa-solid fa-circle-check"></i><span><strong>Statut</strong>Terminé ✓</span></div>
+      </div>
+      <div class="sidebar-card">
+        <h5>Technologies</h5>
+        <div class="sidebar-techs">
+          <span class="sidebar-tech">GLPI 10.x</span>
+          <span class="sidebar-tech">Linux Debian 12</span>
+          <span class="sidebar-tech">Apache2</span>
+          <span class="sidebar-tech">MariaDB</span>
+          <span class="sidebar-tech">PHP 8.2</span>
+          <span class="sidebar-tech">VirtualBox</span>
+        </div>
+      </div>
+      <a href="documents/rapport-glpi.pdf" class="btn-download" style="width:100%;justify-content:center;" target="_blank">
+        <i class="fa-solid fa-file-pdf"></i> Télécharger le rapport
+      </a>
+    </aside>
+
+    <div class="report-content">
+      <div class="report-section">
+        <h2><i class="fa-solid fa-circle-info"></i> Contexte & Objectifs</h2>
+        <p><strong>GLPI</strong> (Gestionnaire Libre de Parc Informatique) est une solution open source de gestion ITSM largement utilisée en entreprise. Ce projet consiste à déployer GLPI sur un serveur <strong>Linux Debian</strong> afin de gérer le parc informatique d'une PME fictive : inventaire des équipements, gestion des tickets et SLA.</p>
+        <p>Le déploiement s'effectue entièrement en ligne de commande Linux, ce qui permet de consolider les compétences en administration système et en gestion de stack LAMP.</p>
+        <h3>Objectifs</h3>
+        <ul>
+          <li>Installer et configurer une stack LAMP (Linux, Apache, MariaDB, PHP) sur Debian</li>
+          <li>Déployer GLPI et le configurer pour la gestion de parc</li>
+          <li>Inventorier les équipements informatiques (ordinateurs, serveurs, périphériques)</li>
+          <li>Mettre en place le helpdesk : catégories de tickets, SLA, groupes d'utilisateurs</li>
+        </ul>
+      </div>
+
+      <div class="report-section">
+        <h2><i class="fa-solid fa-list-check"></i> Étapes de réalisation</h2>
+        <ol class="step-list">
+          <li>
+            <div class="step-content">
+              <strong>Installation de Linux Debian 12</strong>
+              <p>VM VirtualBox : 2 Go RAM, 20 Go disque, adaptateur Host-only. Installation minimale sans interface graphique (serveur headless). Mise à jour : <code style="color:var(--accent);font-size:0.85em;">apt update && apt upgrade -y</code>.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Installation d'Apache2</strong>
+              <p><code style="color:var(--accent);font-size:0.85em;">apt install apache2</code>. Activation des modules nécessaires : mod_rewrite, mod_headers. Démarrage et activation au boot : <code style="color:var(--accent);font-size:0.85em;">systemctl enable --now apache2</code>.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Installation et sécurisation de MariaDB</strong>
+              <p><code style="color:var(--accent);font-size:0.85em;">apt install mariadb-server</code> puis <code style="color:var(--accent);font-size:0.85em;">mysql_secure_installation</code> : suppression des utilisateurs anonymes, désactivation du login root distant, suppression de la base de test. Création de la base glpidb et de l'utilisateur glpiuser.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Installation de PHP 8.2 et extensions</strong>
+              <p>Installation de PHP et des extensions requises par GLPI : php-curl, php-gd, php-intl, php-ldap, php-mbstring, php-mysql, php-xml, php-zip. Configuration du timezone dans php.ini.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Déploiement de GLPI 10.x</strong>
+              <p>Téléchargement de l'archive GLPI depuis le dépôt officiel GitHub. Extraction dans /var/www/html/glpi. Configuration des permissions : <code style="color:var(--accent);font-size:0.85em;">chown -R www-data:www-data /var/www/html/glpi</code>. Configuration du Virtual Host Apache avec DocumentRoot.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Configuration via l'assistant web</strong>
+              <p>Accès à http://192.168.10.10/glpi depuis le poste client. Assistant d'installation : sélection de la langue, test de la base de données, création des tables. Connexion initiale avec le compte glpi/glpi puis changement du mot de passe.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Inventaire et helpdesk</strong>
+              <p>Ajout manuel de 15 équipements (5 ordinateurs, 3 serveurs, 4 imprimantes, 3 switches). Création de 4 catégories de tickets (Matériel, Logiciel, Réseau, Accès). Définition de SLA : P1 résolution 4h, P2 8h, P3 24h. Configuration des groupes : techniciens, utilisateurs, responsables.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="report-section">
+        <h2><i class="fa-solid fa-chart-bar"></i> Résultats</h2>
+        <div class="result-grid">
+          <div class="result-card"><i class="fa-solid fa-box"></i><strong>15</strong><span>Actifs inventoriés</span></div>
+          <div class="result-card"><i class="fa-solid fa-ticket"></i><strong>4</strong><span>Catégories tickets</span></div>
+          <div class="result-card"><i class="fa-solid fa-stopwatch"></i><strong>3</strong><span>Niveaux de SLA</span></div>
+          <div class="result-card"><i class="fa-solid fa-users"></i><strong>3</strong><span>Groupes créés</span></div>
+        </div>
+        <p style="margin-top:1.5rem;">GLPI est pleinement opérationnel. Le helpdesk permet la création, l'assignation et le suivi des tickets. L'inventaire du parc est à jour et consultable depuis n'importe quel poste du réseau.</p>
+      </div>
+
+      <div class="report-section">
+        <h2><i class="fa-solid fa-lightbulb"></i> Ce que j'ai appris</h2>
+        <div class="learned-grid">
+          <div class="learned-item"><i class="fa-solid fa-check"></i><p>Administration complète d'un serveur Linux Debian en ligne de commande</p></div>
+          <div class="learned-item"><i class="fa-solid fa-check"></i><p>Configuration et sécurisation d'une stack LAMP (Apache, MariaDB, PHP)</p></div>
+          <div class="learned-item"><i class="fa-solid fa-check"></i><p>Fonctionnement d'une solution ITSM et concepts ITIL (tickets, SLA, CMDB)</p></div>
+          <div class="learned-item"><i class="fa-solid fa-check"></i><p>Gestion des permissions Linux (chmod, chown) pour les applications web</p></div>
+        </div>
+      </div>
+
+      <div class="report-section">
+        <h2><i class="fa-solid fa-file-pdf"></i> Documentation</h2>
+        <div class="placeholder-box">
+          <i class="fa-solid fa-file-arrow-down"></i>
+          <p>Rapport complet PDF à venir</p>
+          <a href="documents/rapport-glpi.pdf" class="btn-download" style="margin-top:1rem;display:inline-flex;" target="_blank">
+            <i class="fa-solid fa-file-pdf"></i> Télécharger le rapport complet
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 Leo BIGOTE — BTS SIO SISR</span>
+  <div class="footer-links">
+    <a href="projets.html"><i class="fa-solid fa-arrow-left"></i> Tous les projets</a>
+    <a href="projet-sauvegarde.html">Projet suivant <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>

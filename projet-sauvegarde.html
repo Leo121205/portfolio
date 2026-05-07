@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de sauvegarde — Leo BIGOTE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<nav>
+  <a href="index.html" class="nav-logo">Leo<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="projets.html" class="active">Projets</a></li>
+    <li><a href="index.html#blocs">Blocs</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-badge">Disponible • 2026</span>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Accueil</a>
+  <a href="competences.html">Compétences</a>
+  <a href="projets.html">Projets</a>
+  <a href="index.html#blocs">Blocs</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <a href="projets.html">Projets</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span>Plan de sauvegarde</span>
+    </div>
+    <h1 class="page-title">Plan de <span>sauvegarde 3-2-1</span></h1>
+    <p class="page-subtitle">Mise en place d'une politique de sauvegarde des données critiques avec Azure Backup, scripts Robocopy et procédures de restauration testées.</p>
+    <div class="page-meta">
+      <span class="meta-badge done"><i class="fa-solid fa-circle-check"></i> Terminé</span>
+      <span class="meta-badge"><i class="fa-regular fa-calendar"></i> BTS 1ère année — 2025</span>
+      <span class="meta-badge"><i class="fa-solid fa-tag"></i> Sauvegarde & PRA</span>
+    </div>
+  </div>
+</div>
+
+<div class="report-wrapper">
+  <div class="report-inner">
+    <aside class="report-sidebar">
+      <div class="sidebar-card">
+        <h5>Informations</h5>
+        <div class="sidebar-info-item"><i class="fa-solid fa-calendar"></i><span><strong>Période</strong>BTS 1ère année (2025)</span></div>
+        <div class="sidebar-info-item"><i class="fa-solid fa-clock"></i><span><strong>Durée</strong>2 semaines</span></div>
+        <div class="sidebar-info-item"><i class="fa-solid fa-user"></i><span><strong>Contexte</strong>Projet individuel</span></div>
+        <div class="sidebar-info-item"><i class="fa-solid fa-circle-check"></i><span><strong>Statut</strong>Terminé ✓</span></div>
+      </div>
+      <div class="sidebar-card">
+        <h5>Technologies</h5>
+        <div class="sidebar-techs">
+          <span class="sidebar-tech">Robocopy</span>
+          <span class="sidebar-tech">Azure Backup</span>
+          <span class="sidebar-tech">PowerShell</span>
+          <span class="sidebar-tech">Planificateur Windows</span>
+          <span class="sidebar-tech">Windows Server Backup</span>
+        </div>
+      </div>
+      <a href="documents/rapport-sauvegarde.pdf" class="btn-download" style="width:100%;justify-content:center;" target="_blank">
+        <i class="fa-solid fa-file-pdf"></i> Télécharger le rapport
+      </a>
+    </aside>
+
+    <div class="report-content">
+      <div class="report-section">
+        <h2><i class="fa-solid fa-circle-info"></i> Contexte & Objectifs</h2>
+        <p>La perte de données est l'un des risques majeurs pour les entreprises. Ce projet met en œuvre la <strong>règle 3-2-1</strong> de sauvegarde : <strong>3 copies</strong> des données, sur <strong>2 supports différents</strong>, dont <strong>1 copie hors site</strong> (cloud Azure). L'environnement s'appuie sur l'infrastructure Active Directory efrei.local déjà en place.</p>
+        <h3>Règle 3-2-1 appliquée</h3>
+        <ul>
+          <li><strong>Copie 1 :</strong> Données source sur le serveur de fichiers (SRV-FILES)</li>
+          <li><strong>Copie 2 :</strong> Sauvegarde locale sur NAS virtuel (scripts Robocopy planifiés)</li>
+          <li><strong>Copie 3 :</strong> Sauvegarde hors site sur Azure Backup (coffre Recovery Services)</li>
+        </ul>
+        <h3>Données critiques identifiées</h3>
+        <ul>
+          <li>Dossiers partagés réseau (\\SRV-FILES\Partage$) — 15 Go</li>
+          <li>Base de données GLPI (dump MariaDB quotidien) — 500 Mo</li>
+          <li>État du système Active Directory (System State Backup) — 8 Go</li>
+        </ul>
+      </div>
+
+      <div class="report-section">
+        <h2><i class="fa-solid fa-list-check"></i> Étapes de réalisation</h2>
+        <ol class="step-list">
+          <li>
+            <div class="step-content">
+              <strong>Analyse des besoins et politique de sauvegarde</strong>
+              <p>Identification des données critiques, classification par niveau de sensibilité. Définition des RTO (Recovery Time Objective : 4h) et RPO (Recovery Point Objective : 24h). Documentation de la politique dans un Plan de Reprise d'Activité (PRA).</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Script Robocopy — Sauvegarde locale quotidienne</strong>
+              <p>Script PowerShell avec Robocopy : copie incrémentielle des dossiers partagés vers le NAS (D:\Backups\). Options : /MIR (miroir), /LOG (journalisation), /R:3 (3 tentatives), /W:10 (attente 10s entre tentatives). Rétention : 7 jours de sauvegardes incrémentielles.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Planification via le Planificateur de tâches Windows</strong>
+              <p>Tâche planifiée : exécution tous les jours à 02h00 (heure creuse). Compte de service dédié avec droits de lecture sur la source et écriture sur la destination NAS. Notification par email en cas d'échec (via SMTP Windows).</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Sauvegarde système — Windows Server Backup</strong>
+              <p>Installation du rôle Windows Server Backup. Sauvegarde complète hebdomadaire (dimanche 03h00) incluant le System State (état AD, registre, fichiers système). Sauvegarde vers lecteur dédié \\NAS\SystemBackup$.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Configuration Azure Backup</strong>
+              <p>Création d'un coffre Azure Recovery Services. Installation de l'agent MARS (Microsoft Azure Recovery Services) sur le serveur. Planification : sauvegarde quotidienne à 03h30, rétention 30 jours. Chiffrement des données en transit et au repos (AES-256).</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Tests de restauration</strong>
+              <p>Test 1 — Restauration de fichier individuel : restauration d'un fichier supprimé depuis la sauvegarde Robocopy (succès, 2 minutes). Test 2 — Restauration complète d'un dossier depuis Azure Backup (succès, 8 minutes). Test 3 — Restauration de l'état AD sur un serveur secondaire (succès, procédure documentée).</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="report-section">
+        <h2><i class="fa-solid fa-chart-bar"></i> Résultats</h2>
+        <div class="result-grid">
+          <div class="result-card"><i class="fa-solid fa-copy"></i><strong>3</strong><span>Copies garanties</span></div>
+          <div class="result-card"><i class="fa-solid fa-rotate-left"></i><strong>2 min</strong><span>Restauration fichier</span></div>
+          <div class="result-card"><i class="fa-solid fa-clock"></i><strong>4h</strong><span>RTO garanti</span></div>
+          <div class="result-card"><i class="fa-solid fa-calendar-day"></i><strong>24h</strong><span>RPO garanti</span></div>
+        </div>
+        <p style="margin-top:1.5rem;">Les trois tests de restauration ont été réalisés avec succès et les durées mesurées sont conformes aux objectifs RTO/RPO définis. Les journaux Robocopy ne signalent aucune erreur sur 14 jours de tests consécutifs.</p>
+      </div>
+
+      <div class="report-section">
+        <h2><i class="fa-solid fa-lightbulb"></i> Ce que j'ai appris</h2>
+        <div class="learned-grid">
+          <div class="learned-item"><i class="fa-solid fa-check"></i><p>Concepts de continuité d'activité : RTO, RPO, PRA, PCA</p></div>
+          <div class="learned-item"><i class="fa-solid fa-check"></i><p>Scripting PowerShell avancé avec Robocopy pour l'automatisation des sauvegardes</p></div>
+          <div class="learned-item"><i class="fa-solid fa-check"></i><p>Configuration d'Azure Backup et de l'agent MARS pour la sauvegarde cloud</p></div>
+          <div class="learned-item"><i class="fa-solid fa-check"></i><p>Importance de tester régulièrement les procédures de restauration</p></div>
+        </div>
+      </div>
+
+      <div class="report-section">
+        <h2><i class="fa-solid fa-file-pdf"></i> Documentation</h2>
+        <div class="placeholder-box">
+          <i class="fa-solid fa-file-arrow-down"></i>
+          <p>Rapport complet PDF à venir</p>
+          <a href="documents/rapport-sauvegarde.pdf" class="btn-download" style="margin-top:1rem;display:inline-flex;" target="_blank">
+            <i class="fa-solid fa-file-pdf"></i> Télécharger le rapport complet
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 Leo BIGOTE — BTS SIO SISR</span>
+  <div class="footer-links">
+    <a href="projets.html"><i class="fa-solid fa-arrow-left"></i> Tous les projets</a>
+    <a href="projet-securite.html">Projet suivant <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>

@@ -3,548 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Léo BIGOTÉ — BTS SIO SISR</title>
+<title>Leo BIGOTE — BTS SIO SISR</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-  :root {
-    --bg: #0a0a0f;
-    --surface: #111118;
-    --surface2: #1a1a24;
-    --accent: #6fffb0;
-    --accent2: #00c9ff;
-    --text: #f0f0f5;
-    --muted: #7a7a8c;
-    --border: rgba(255,255,255,0.07);
-    --font-display: 'Syne', sans-serif;
-    --font-body: 'Instrument Sans', sans-serif;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.7;
-    overflow-x: hidden;
-    cursor: none;
-  }
-
-  #cursor {
-    width: 12px; height: 12px;
-    background: var(--accent);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%,-50%);
-    transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
-    mix-blend-mode: difference;
-  }
-  #cursor-ring {
-    width: 40px; height: 40px;
-    border: 1px solid rgba(111,255,176,0.4);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%,-50%);
-    transition: all 0.15s ease;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1000;
-    opacity: 0.4;
-  }
-
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 500;
-    padding: 1.5rem 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    backdrop-filter: blur(20px);
-    background: rgba(10,10,15,0.8);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo {
-    font-family: var(--font-display);
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--text);
-    text-decoration: none;
-    letter-spacing: -0.03em;
-  }
-  .nav-logo span { color: var(--accent); }
-  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    transition: color 0.3s;
-    position: relative;
-  }
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px; left: 0;
-    width: 0; height: 1px;
-    background: var(--accent);
-    transition: width 0.3s;
-  }
-  .nav-links a:hover { color: var(--text); }
-  .nav-links a:hover::after { width: 100%; }
-  .nav-badge {
-    font-size: 0.75rem;
-    padding: 0.3rem 0.8rem;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-    border-radius: 100px;
-    letter-spacing: 0.05em;
-  }
-
-  #accueil {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 8rem 4rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-  #bg3d {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-  }
-  .hero-grid-bg {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(111,255,176,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(111,255,176,0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black, transparent);
-    z-index: 0;
-  }
-  .hero-content { position: relative; z-index: 2; max-width: 800px; }
-  .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.2s forwards;
-  }
-  .hero-tag::before {
-    content: '';
-    width: 6px; height: 6px;
-    background: var(--accent);
-    border-radius: 50%;
-    animation: blink 1.5s infinite;
-  }
-  @keyframes blink { 0%,100%{opacity:1}50%{opacity:0.2} }
-  .hero-name {
-    font-family: var(--font-display);
-    font-size: clamp(3.5rem, 9vw, 7rem);
-    font-weight: 800;
-    line-height: 0.95;
-    letter-spacing: -0.04em;
-    margin-bottom: 0.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.4s forwards;
-  }
-  .hero-name .line2 { color: var(--accent); }
-  .hero-sub {
-    font-size: 1.1rem;
-    color: var(--muted);
-    max-width: 480px;
-    margin: 1.5rem 0 2.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.6s forwards;
-  }
-  .hero-sub strong { color: var(--text); font-weight: 500; }
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.8s forwards;
-  }
-  .btn-primary {
-    padding: 0.85rem 2rem;
-    background: var(--accent);
-    color: #0a0a0f;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 500;
-    font-size: 0.9rem;
-    letter-spacing: 0.02em;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-  .btn-primary::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: white;
-    transform: translateX(-100%);
-    transition: transform 0.3s;
-  }
-  .btn-primary:hover::before { transform: translateX(0); }
-  .btn-primary span { position: relative; z-index: 1; }
-  .btn-primary:hover { color: #0a0a0f; }
-  .btn-outline {
-    padding: 0.85rem 2rem;
-    border: 1px solid var(--border);
-    color: var(--text);
-    text-decoration: none;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    letter-spacing: 0.02em;
-    transition: all 0.3s;
-  }
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-  .hero-scroll {
-    position: absolute;
-    bottom: 2rem; left: 50%;
-    transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
-    color: var(--muted); font-size: 0.75rem; letter-spacing: 0.1em;
-    text-transform: uppercase;
-    animation: fadeIn 1s 1.5s both;
-    z-index: 2;
-  }
-  .scroll-line {
-    width: 1px; height: 50px;
-    background: linear-gradient(var(--accent), transparent);
-    animation: scrollDrop 2s ease-in-out infinite;
-  }
-  @keyframes scrollDrop {
-    0% { transform: scaleY(0); transform-origin: top; }
-    50% { transform: scaleY(1); transform-origin: top; }
-    51% { transform: scaleY(1); transform-origin: bottom; }
-    100% { transform: scaleY(0); transform-origin: bottom; }
-  }
-  .hero-stack { display: none; }
-
-  section { padding: 6rem 4rem; position: relative; }
-  .section-label {
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.75rem;
-    display: flex; align-items: center; gap: 1rem;
-  }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    max-width: 60px;
-    height: 1px;
-    background: var(--accent);
-    opacity: 0.4;
-  }
-  .section-title {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    margin-bottom: 3rem;
-    line-height: 1;
-  }
-
-  #about { background: var(--surface); }
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .about-text p { color: var(--muted); margin-bottom: 1.5rem; font-size: 1.05rem; }
-  .about-text p strong { color: var(--text); }
-  .about-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-top: 2rem;
-  }
-  .stat-card {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.5rem;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.3s;
-  }
-  .stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), transparent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s;
-  }
-  .stat-card:hover::before { transform: scaleX(1); }
-  .stat-card:hover { border-color: rgba(111,255,176,0.2); }
-  .stat-num {
-    font-family: var(--font-display);
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--accent);
-    line-height: 1;
-    margin-bottom: 0.3rem;
-  }
-  .stat-label { font-size: 0.85rem; color: var(--muted); }
-  .about-info { display: flex; flex-direction: column; gap: 1.5rem; }
-  .info-block {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.5rem;
-    transition: all 0.3s;
-  }
-  .info-block:hover { border-color: rgba(111,255,176,0.3); transform: translateX(8px); }
-  .info-block h4 {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    color: var(--accent);
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-  }
-  .info-block p { color: var(--muted); font-size: 0.9rem; }
-
-  .skills-section { padding: 6rem 4rem; background: var(--bg); }
-  .skills-inner { max-width: 1100px; margin: 0 auto; }
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 3rem;
-  }
-  .skill-item {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.5rem;
-    transition: all 0.3s;
-  }
-  .skill-item:hover { border-color: rgba(111,255,176,0.3); }
-  .skill-name { font-size: 0.9rem; font-weight: 500; color: var(--text); margin-bottom: 1rem; }
-  .skill-bar {
-    height: 2px;
-    background: var(--border);
-    border-radius: 100px;
-    overflow: hidden;
-  }
-  .skill-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    border-radius: 100px;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-
-  .blocs-wrapper { padding: 6rem 4rem; }
-  .blocs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
-  }
-  .bloc-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 1.5rem;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-  .bloc-card::after {
-    content: '→';
-    position: absolute;
-    right: 1.5rem;
-    color: var(--accent);
-    opacity: 0;
-    transform: translateX(-8px);
-    transition: all 0.3s;
-  }
-  .bloc-card:hover { border-color: rgba(111,255,176,0.3); transform: translateY(-3px); }
-  .bloc-card:hover::after { opacity: 1; transform: translateX(0); }
-  .bloc-icon {
-    width: 44px; height: 44px;
-    background: rgba(111,255,176,0.08);
-    border: 1px solid rgba(111,255,176,0.2);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--font-display);
-    font-size: 0.75rem;
-    font-weight: 800;
-    color: var(--accent);
-    flex-shrink: 0;
-  }
-  .bloc-info { flex: 1; }
-  .bloc-num { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.05em; margin-bottom: 0.15rem; }
-  .bloc-name { font-size: 0.9rem; color: var(--text); font-weight: 500; line-height: 1.3; }
-
-  #projets { background: var(--surface); }
-  .projets-inner { max-width: 1100px; margin: 0 auto; }
-  .projet-list { display: flex; flex-direction: column; gap: 1px; }
-  .projet-item {
-    display: grid;
-    grid-template-columns: 80px 1fr auto;
-    align-items: center;
-    gap: 2rem;
-    padding: 2rem 0;
-    border-bottom: 1px solid var(--border);
-    transition: all 0.3s;
-    position: relative;
-  }
-  .projet-item::before {
-    content: '';
-    position: absolute;
-    left: -4rem; right: -4rem;
-    top: 0; bottom: 0;
-    background: var(--surface2);
-    opacity: 0;
-    transition: opacity 0.3s;
-    z-index: 0;
-  }
-  .projet-item:hover::before { opacity: 1; }
-  .projet-item > * { position: relative; z-index: 1; }
-  .projet-num {
-    font-family: var(--font-display);
-    font-size: 0.8rem;
-    color: var(--muted);
-    font-weight: 700;
-    letter-spacing: 0.05em;
-  }
-  .projet-info h3 {
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-    transition: color 0.3s;
-  }
-  .projet-item:hover .projet-info h3 { color: var(--accent); }
-  .projet-info p { font-size: 0.85rem; color: var(--muted); }
-  .projet-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-end; }
-  .tag {
-    padding: 0.25rem 0.7rem;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    font-size: 0.72rem;
-    color: var(--muted);
-    letter-spacing: 0.03em;
-    transition: all 0.3s;
-  }
-  .projet-item:hover .tag { border-color: rgba(111,255,176,0.3); color: var(--accent); }
-
-  #contact {
-    padding: 6rem 4rem;
-    background: var(--surface);
-    text-align: center;
-  }
-  .contact-inner { max-width: 700px; margin: 0 auto; }
-  .contact-title {
-    font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 1;
-    margin: 1.5rem 0;
-  }
-  .contact-title span { color: var(--accent); }
-  .contact-sub { color: var(--muted); font-size: 1.05rem; margin-bottom: 3rem; }
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.85rem 1.75rem;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    color: var(--text);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: all 0.3s;
-  }
-  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
-  .contact-link.primary { background: var(--accent); color: #0a0a0f; border-color: var(--accent); font-weight: 500; }
-  .contact-link.primary:hover { background: transparent; color: var(--accent); }
-
-  footer {
-    padding: 2rem 4rem;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.8rem;
-    color: var(--muted);
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  @media (max-width: 768px) {
-    nav { padding: 1.2rem 1.5rem; }
-    .nav-links { display: none; }
-    section, .blocs-wrapper, .skills-section, #contact { padding: 4rem 1.5rem; }
-    #accueil { padding: 7rem 1.5rem 4rem; }
-    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .projet-item { grid-template-columns: 50px 1fr; }
-    .projet-tags { display: none; }
-    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
-  }
-</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<!-- Remplacer G-XXXXXXXXXX par ton ID Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
 </head>
 <body>
 
@@ -552,17 +18,31 @@
 <div id="cursor-ring"></div>
 
 <nav>
-  <a href="#accueil" class="nav-logo">Léo<span>.</span></a>
+  <a href="index.html" class="nav-logo">Leo<span>.</span></a>
   <ul class="nav-links">
-    <li><a href="#about">À propos</a></li>
-    <li><a href="#competences">Compétences</a></li>
-    <li><a href="#projets">Projets</a></li>
+    <li><a href="#accueil" class="active">Accueil</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="projets.html">Projets</a></li>
     <li><a href="#blocs">Blocs</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <span class="nav-badge">Disponible • 2026</span>
+  <div class="nav-right">
+    <span class="nav-badge">Disponible • 2026</span>
+    <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#accueil">Accueil</a>
+  <a href="competences.html">Compétences</a>
+  <a href="projets.html">Projets</a>
+  <a href="#blocs">Blocs</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- HERO -->
 <section id="accueil">
   <canvas id="bg3d"></canvas>
   <div class="hero-grid-bg"></div>
@@ -570,16 +50,15 @@
     <div class="hero-tag">BTS SIO • Option SISR • EFREI Paris</div>
     <h1 class="hero-name">
       <div>LEO</div>
-      <div class="line2">BIGOTÉ</div>
+      <div class="line2">BIGOTE</div>
     </h1>
     <p class="hero-sub">
-      Étudiant passionné par l'<strong>administration systèmes & réseaux</strong>.
-      Je conçois et déploie des infrastructures IT robustes.
+      Étudiant en BTS SIO SISR passionné par l'<strong>administration systèmes & réseaux</strong>, la <strong>cybersécurité</strong> et le cloud. Stage confirmé à l'<strong>Université Paris-Saclay</strong> — en recherche d'<strong>alternance</strong>.
     </p>
     <div class="hero-actions">
-      <a href="#projets" class="btn-primary"><span>Voir mes projets</span></a>
-      <a href="mailto:leopakiam.bigote@gmail.com" class="btn-outline">Me contacter</a>
-      <a href="https://www.linkedin.com/in/leo-bigote/" class="btn-outline" target="_blank">LinkedIn</a>
+      <a href="projets.html" class="btn-primary"><i class="fa-solid fa-folder-open"></i> <span>Voir mes projets</span></a>
+      <a href="documents/CV Leo Alternance 2026.pdf" class="btn-download" target="_blank"><i class="fa-solid fa-file-arrow-down"></i> Télécharger mon CV</a>
+      <a href="https://www.linkedin.com/in/leo-bigote/" class="btn-outline" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -588,207 +67,240 @@
   </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
   <div class="about-grid">
     <div class="about-text reveal">
       <div class="section-label">À propos</div>
       <h2 class="section-title">Qui suis-je ?</h2>
-      <p>Étudiant en <strong>BTS SIO option SISR</strong> à l'EFREI Paris, je me spécialise dans la gestion et l'administration d'infrastructures informatiques.</p>
-      <p>Mon parcours m'a permis de développer une expertise en <strong>Active Directory</strong>, en <strong>virtualisation</strong> et en <strong>administration réseau</strong>. J'ai notamment mis en place un domaine AD complet avec gestion des utilisateurs, groupes et OU.</p>
-      <p><strong>Objectif</strong> : décrocher un stage ou une alternance en administration systèmes & réseaux.</p>
+
+      <!-- Photo : remplacer le bloc placeholder par <img src="images/photo.jpg" alt="Leo BIGOTE" class="about-photo"> -->
+      <div class="about-photo-placeholder">
+        <i class="fa-solid fa-user"></i>
+        <span>Ajouter ta photo ici<br><small>Remplacer ce bloc par &lt;img class="about-photo"&gt;</small></span>
+      </div>
+
+      <p>Étudiant en <strong>BTS SIO option SISR</strong> à l'EFREI Paris, je me spécialise dans la gestion et l'administration d'infrastructures informatiques, incluant les environnements <strong>Windows Server, Linux Debian, Cisco</strong> et <strong>Azure</strong>. J'ai réalisé un stage en tant que <strong>Technicien IT</strong> à l'<strong>Université Paris-Saclay</strong>.</p>
+      <p>Mon parcours m'a permis de développer une expertise en <strong>Active Directory</strong>, en <strong>virtualisation</strong> (VirtualBox, VMware), en <strong>administration réseau</strong> (VLAN, routage, Wi-Fi) et en <strong>cybersécurité</strong> (MITM, SQLi, XSS). J'ai également déployé <strong>GLPI sur Azure</strong> pour la gestion de parc informatique, avec automatisation des sauvegardes vers Google Drive.</p>
+      <p><strong>Objectif</strong> : décrocher une alternance (12 mois, rythme 2j école / 3j entreprise) en administration systèmes & réseaux / cybersécurité.</p>
       <div class="about-stats">
-        <div class="stat-card"><div class="stat-num">6</div><div class="stat-label">Blocs de compétences</div></div>
-        <div class="stat-card"><div class="stat-num">3+</div><div class="stat-label">Projets réalisés</div></div>
-        <div class="stat-card"><div class="stat-num">1</div><div class="stat-label">An d'études</div></div>
+        <div class="stat-card"><div class="stat-num">10</div><div class="stat-label">Projets réalisés</div></div>
+        <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">Compétences C</div></div>
+        <div class="stat-card"><div class="stat-num">1</div><div class="stat-label">Stage confirmé</div></div>
         <div class="stat-card"><div class="stat-num">IDF</div><div class="stat-label">Mobilité totale</div></div>
       </div>
     </div>
     <div class="about-info reveal">
-      <div class="info-block"><h4>Formation</h4><p>BTS SIO Option SISR — EFREI Paris</p></div>
-      <div class="info-block"><h4>Disponibilité</h4><p>Stage / Alternance à partir de 2026</p></div>
-      <div class="info-block"><h4>Localisation</h4><p>Île-de-France — Mobilité totale</p></div>
       <div class="info-block">
-        <h4>Liens</h4>
+        <h4><i class="fa-solid fa-graduation-cap"></i> Formation</h4>
+        <p>BTS SIO Option SISR — EFREI Paris</p>
+      </div>
+      <div class="info-block">
+        <h4><i class="fa-solid fa-calendar-check"></i> Disponibilité</h4>
+        <p>Alternance — 12 mois · Rythme 2j école / 3j entreprise</p>
+      </div>
+      <div class="info-block">
+        <h4><i class="fa-solid fa-location-dot"></i> Localisation</h4>
+        <p>Paris, France — Mobilité totale IDF</p>
+      </div>
+      <div class="info-block">
+        <h4><i class="fa-solid fa-microchip"></i> Stack technique</h4>
+        <p>Windows Server · Linux Debian · Cisco · Azure · GLPI · VirtualBox · VMware · Active Directory · Python · Bash · PowerShell</p>
+      </div>
+      <div class="info-block">
+        <h4><i class="fa-solid fa-link"></i> Liens</h4>
         <p>
-          <a href="https://linkedin.com/in/leo-bigote" target="_blank" style="color:var(--accent);text-decoration:none;">LinkedIn</a>
+          <a href="https://linkedin.com/in/leo-bigote" target="_blank">LinkedIn</a>
           &nbsp;·&nbsp;
-          <a href="https://github.com/Leo121205" target="_blank" style="color:var(--accent);text-decoration:none;">GitHub</a>
+          <a href="https://github.com/Leo121205" target="_blank">GitHub</a>
           &nbsp;·&nbsp;
-          <a href="mailto:leopakiam.bigote@gmail.com" style="color:var(--accent);text-decoration:none;">Email</a>
+          <a href="mailto:leopakiam.bigote@gmail.com">Email</a>
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="skills-section" id="competences">
-  <div class="skills-inner">
-    <div class="section-label reveal">Stack technique</div>
-    <h2 class="section-title reveal">Compétences</h2>
-    <div class="skills-grid">
-      <div class="skill-item reveal"><div class="skill-name">Windows Server / AD DS</div><div class="skill-bar"><div class="skill-fill" data-width="0.85"></div></div></div>
-      <div class="skill-item reveal"><div class="skill-name">Gestion utilisateurs / GPO</div><div class="skill-bar"><div class="skill-fill" data-width="0.80"></div></div></div>
-      <div class="skill-item reveal"><div class="skill-name">TCP/IP — Réseaux</div><div class="skill-bar"><div class="skill-fill" data-width="0.75"></div></div></div>
-      <div class="skill-item reveal"><div class="skill-name">Virtualisation (VirtualBox)</div><div class="skill-bar"><div class="skill-fill" data-width="0.80"></div></div></div>
-      <div class="skill-item reveal"><div class="skill-name">DNS / DHCP</div><div class="skill-bar"><div class="skill-fill" data-width="0.70"></div></div></div>
-      <div class="skill-item reveal"><div class="skill-name">Sécurité & bonnes pratiques</div><div class="skill-bar"><div class="skill-fill" data-width="0.65"></div></div></div>
-    </div>
-  </div>
-</div>
-
-<div class="blocs-wrapper" id="blocs">
-  <div class="section-label reveal">Documentation</div>
-  <h2 class="section-title reveal">Blocs de compétences</h2>
-  <div class="blocs-grid">
-    <a href="https://leo121205.github.io/bloc_de_competences/gerer-patrimoine-informatique.html" class="bloc-card reveal">
-      <div class="bloc-icon">B1</div>
-      <div class="bloc-info"><div class="bloc-num">Bloc 1</div><div class="bloc-name">Gérer le patrimoine informatique</div></div>
-    </a>
-    <a href="https://leo121205.github.io/bloc_de_competences/repondre-incidents-demandes.html" class="bloc-card reveal">
-      <div class="bloc-icon">B2</div>
-      <div class="bloc-info"><div class="bloc-num">Bloc 2</div><div class="bloc-name">Répondre aux incidents et aux demandes</div></div>
-    </a>
-    <a href="https://leo121205.github.io/bloc_de_competences/developper-presence-en-ligne.html" class="bloc-card reveal">
-      <div class="bloc-icon">B3</div>
-      <div class="bloc-info"><div class="bloc-num">Bloc 3</div><div class="bloc-name">Développer la présence en ligne</div></div>
-    </a>
-    <a href="https://leo121205.github.io/bloc_de_competences/travailler-en-mode-projet.html" class="bloc-card reveal">
-      <div class="bloc-icon">B4</div>
-      <div class="bloc-info"><div class="bloc-num">Bloc 4</div><div class="bloc-name">Travailler en mode projet</div></div>
-    </a>
-    <a href="https://leo121205.github.io/bloc_de_competences/mettre-a-disposition-un-service.html" class="bloc-card reveal">
-      <div class="bloc-icon">B5</div>
-      <div class="bloc-info"><div class="bloc-num">Bloc 5</div><div class="bloc-name">Mettre à disposition un service</div></div>
-    </a>
-    <a href="https://leo121205.github.io/bloc_de_competences/organiser-developpement-professionnel.html" class="bloc-card reveal">
-      <div class="bloc-icon">B6</div>
-      <div class="bloc-info"><div class="bloc-num">Bloc 6</div><div class="bloc-name">Organiser son développement professionnel</div></div>
-    </a>
-  </div>
-</div>
-
+<!-- PROJETS FEATURED -->
 <section id="projets">
   <div class="projets-inner">
     <div class="section-label reveal">Réalisations</div>
     <h2 class="section-title reveal">Projets récents</h2>
     <div class="projet-list">
-      <div class="projet-item reveal">
+
+      <a href="projet-ad.html" class="projet-item reveal">
         <div class="projet-num">01</div>
         <div class="projet-info">
           <h3>Active Directory — efrei.local</h3>
-          <p>Mise en place d'un domaine AD complet avec OU, utilisateurs, groupes et stratégies.</p>
+          <p>Mise en place d'un domaine AD complet avec OU, utilisateurs, groupes et GPO.</p>
         </div>
         <div class="projet-tags">
           <span class="tag">Windows Server</span>
           <span class="tag">AD DS</span>
           <span class="tag">GPO</span>
         </div>
-      </div>
-      <div class="projet-item reveal">
+        <i class="fa-solid fa-arrow-right projet-arrow"></i>
+      </a>
+
+      <a href="projet-vlan.html" class="projet-item reveal">
         <div class="projet-num">02</div>
         <div class="projet-info">
-          <h3>Réseau d'entreprise virtuel</h3>
-          <p>Infrastructure réseau avec deux interfaces (Host-only + NAT) sous VirtualBox.</p>
+          <h3>Infrastructure VLAN Cisco</h3>
+          <p>Segmentation réseau multi-VLAN avec routage inter-VLAN sur équipements Cisco.</p>
         </div>
         <div class="projet-tags">
-          <span class="tag">VirtualBox</span>
-          <span class="tag">TCP/IP</span>
-          <span class="tag">NAT</span>
+          <span class="tag">Cisco IOS</span>
+          <span class="tag">VLAN 802.1Q</span>
+          <span class="tag">Packet Tracer</span>
         </div>
-      </div>
-      <div class="projet-item reveal">
+        <i class="fa-solid fa-arrow-right projet-arrow"></i>
+      </a>
+
+      <a href="projet-securite.html" class="projet-item reveal">
         <div class="projet-num">03</div>
         <div class="projet-info">
-          <h3>Portfolio BTS SIO</h3>
-          <p>Ce portfolio hébergé sur GitHub Pages avec documentation des blocs de compétences.</p>
+          <h3>Analyse de vulnérabilités</h3>
+          <p>Exploitation et contre-mesures : MITM (ARP Poisoning), SQLi, XSS, CSRF en lab isolé.</p>
         </div>
         <div class="projet-tags">
-          <span class="tag">GitHub Pages</span>
-          <span class="tag">HTML/CSS</span>
+          <span class="tag">Kali Linux</span>
+          <span class="tag">MITM</span>
+          <span class="tag">SQLi / XSS</span>
         </div>
-      </div>
+        <i class="fa-solid fa-arrow-right projet-arrow"></i>
+      </a>
+
+      <a href="projet-azure.html" class="projet-item reveal">
+        <div class="projet-num">04</div>
+        <div class="projet-info">
+          <h3>Infrastructure Cloud Azure</h3>
+          <p>Déploiement d'une infrastructure hybride on-premise + cloud avec Azure AD Connect.</p>
+        </div>
+        <div class="projet-tags">
+          <span class="tag">Microsoft Azure</span>
+          <span class="tag">Azure AD</span>
+          <span class="tag">VNet</span>
+        </div>
+        <i class="fa-solid fa-arrow-right projet-arrow"></i>
+      </a>
+
+      <a href="projet-glpi.html" class="projet-item reveal">
+        <div class="projet-num">05</div>
+        <div class="projet-info">
+          <h3>GLPI — Gestion de parc informatique</h3>
+          <p>Déploiement de GLPI sur Linux Debian pour la gestion des actifs et le helpdesk.</p>
+        </div>
+        <div class="projet-tags">
+          <span class="tag">GLPI</span>
+          <span class="tag">Linux Debian</span>
+          <span class="tag">LAMP</span>
+        </div>
+        <i class="fa-solid fa-arrow-right projet-arrow"></i>
+      </a>
+
+    </div>
+    <div style="text-align:center; margin-top:3rem;">
+      <a href="projets.html" class="btn-outline"><i class="fa-solid fa-grid-2"></i> Voir tous les projets (10)</a>
     </div>
   </div>
 </section>
 
+<!-- COMPÉTENCES C -->
+<div class="blocs-wrapper" id="blocs">
+  <div class="section-inner">
+    <div class="section-label reveal">Documentation BTS SIO</div>
+    <h2 class="section-title reveal">Compétences professionnelles</h2>
+    <div class="blocs-grid">
+
+      <a href="documents/C1_Recensement_Ressources_Numeriques.pdf" class="bloc-card reveal" target="_blank">
+        <div class="bloc-icon">C1</div>
+        <div class="bloc-info">
+          <div class="bloc-num">Compétence C1</div>
+          <div class="bloc-name">Recensement et identification des ressources numériques</div>
+          <p class="bloc-desc">Inventaire du parc informatique avec GLPI déployé sur Azure (VM Debian). Collecte des actifs, exports PDF et mise à jour de la CMDB.</p>
+        </div>
+        <i class="fa-solid fa-arrow-down-to-bracket bloc-arrow"></i>
+      </a>
+
+      <a href="documents/C7_Collecte_Suivi_Demandes.pdf" class="bloc-card reveal" target="_blank">
+        <div class="bloc-icon">C7</div>
+        <div class="bloc-info">
+          <div class="bloc-num">Compétence C7</div>
+          <div class="bloc-name">Collecte, suivi et orientation des demandes</div>
+          <p class="bloc-desc">Gestion des tickets GLPI : création de catégories, règles d'attribution automatique et suivi du cycle Nouveau → En cours → Clos.</p>
+        </div>
+        <i class="fa-solid fa-arrow-down-to-bracket bloc-arrow"></i>
+      </a>
+
+      <a href="documents/C11_Referencement_Services_En_Ligne.pdf" class="bloc-card reveal" target="_blank">
+        <div class="bloc-icon">C11</div>
+        <div class="bloc-info">
+          <div class="bloc-num">Compétence C11</div>
+          <div class="bloc-name">Référencement des services en ligne et mesure de leur visibilité</div>
+          <p class="bloc-desc">Optimisation SEO via HTML sémantique (balises meta, Open Graph) et intégration Google Analytics (gtag.js) pour mesurer l'audience.</p>
+        </div>
+        <i class="fa-solid fa-arrow-down-to-bracket bloc-arrow"></i>
+      </a>
+
+      <a href="documents/C14_Planification_Activites.pdf" class="bloc-card reveal" target="_blank">
+        <div class="bloc-icon">C14</div>
+        <div class="bloc-info">
+          <div class="bloc-num">Compétence C14</div>
+          <div class="bloc-name">Planification des activités</div>
+          <p class="bloc-desc">Planification du déploiement GLPI en 4 phases (analyse, installation, configuration, recette) avec tableau Kanban Trello et jalons.</p>
+        </div>
+        <i class="fa-solid fa-arrow-down-to-bracket bloc-arrow"></i>
+      </a>
+
+      <a href="documents/C17_Deploiement_Service.pdf" class="bloc-card reveal" target="_blank">
+        <div class="bloc-icon">C17</div>
+        <div class="bloc-info">
+          <div class="bloc-num">Compétence C17</div>
+          <div class="bloc-name">Déploiement d'un service</div>
+          <p class="bloc-desc">Déploiement complet de GLPI sur Azure avec scripts bash automatisés (install-glpi.sh, glpi-backup.sh vers Google Drive, glpi-restorebackup.sh).</p>
+        </div>
+        <i class="fa-solid fa-arrow-down-to-bracket bloc-arrow"></i>
+      </a>
+
+      <a href="documents/Tableau de synthèse.pdf" class="bloc-card reveal" target="_blank">
+        <div class="bloc-icon"><i class="fa-solid fa-table-list" style="font-size:1rem;"></i></div>
+        <div class="bloc-info">
+          <div class="bloc-num">Document de synthèse</div>
+          <div class="bloc-name">Tableau de synthèse BTS SIO</div>
+          <p class="bloc-desc">Vue d'ensemble de toutes les situations professionnelles réalisées, avec les compétences mobilisées et les livrables associés.</p>
+        </div>
+        <i class="fa-solid fa-arrow-down-to-bracket bloc-arrow"></i>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
     <div class="section-label" style="justify-content:center;">Contact</div>
     <h2 class="contact-title">Travaillons<br><span>ensemble.</span></h2>
-    <p class="contact-sub">Je recherche un stage ou une alternance en administration systèmes & réseaux. N'hésitez pas à me contacter !</p>
+    <p class="contact-sub">Je recherche une alternance (12 mois, 2j école / 3j entreprise) en administration systèmes & réseaux / cybersécurité. N'hésitez pas à me contacter !</p>
     <div class="contact-links">
-      <a href="mailto:leopakiam.bigote@gmail.com" class="contact-link primary">✉ leopakiam.bigote@gmail.com</a>
-      <a href="https://www.linkedin.com/in/leo-bigote/" target="_blank" class="contact-link">LinkedIn</a>
-      <a href="https://github.com/Leo121205" target="_blank" class="contact-link">GitHub</a>
+      <a href="mailto:leopakiam.bigote@gmail.com" class="contact-link primary"><i class="fa-solid fa-envelope"></i> leopakiam.bigote@gmail.com</a>
+      <a href="https://www.linkedin.com/in/leo-bigote/" target="_blank" class="contact-link"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/Leo121205" target="_blank" class="contact-link"><i class="fa-brands fa-github"></i> GitHub</a>
+      <a href="documents/CV Leo Alternance 2026.pdf" target="_blank" class="contact-link"><i class="fa-solid fa-file-pdf"></i> Mon CV</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <span>© 2026 Léo BIGOTÉ — BTS SIO SISR</span>
-  <span>Hébergé sur GitHub Pages</span>
+  <span>© 2026 Leo BIGOTE — BTS SIO SISR</span>
+  <div class="footer-links">
+    <a href="competences.html">Compétences</a>
+    <a href="projets.html">Projets</a>
+    <a href="https://github.com/Leo121205" target="_blank">GitHub</a>
+  </div>
 </footer>
 
-<script>
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursor-ring');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx + 'px';
-    cursor.style.top = my + 'px';
-  });
-  function animRing() {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.left = rx + 'px';
-    ring.style.top = ry + 'px';
-    requestAnimationFrame(animRing);
-  }
-  animRing();
-  document.querySelectorAll('a, button, .bloc-card, .projet-item').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.width = '20px'; cursor.style.height = '20px';
-      ring.style.width = '60px'; ring.style.height = '60px';
-    });
-    el.addEventListener('mouseleave', () => {
-      cursor.style.width = '12px'; cursor.style.height = '12px';
-      ring.style.width = '40px'; ring.style.height = '40px';
-    });
-  });
-
-  const revealEls = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        const bar = entry.target.querySelector('.skill-fill');
-        if (bar) {
-          const w = parseFloat(bar.dataset.width);
-          bar.style.transform = `scaleX(${w})`;
-        }
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  revealEls.forEach(el => observer.observe(el));
-
-  document.querySelectorAll('.blocs-grid .bloc-card, .skills-grid .skill-item').forEach((el, i) => {
-    el.style.transitionDelay = (i * 0.08) + 's';
-  });
-
-  const sections = document.querySelectorAll('section[id], div[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 200) current = s.getAttribute('id');
-    });
-    navLinks.forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--text)' : '';
-    });
-  });
-</script>
+<script src="main.js"></script>
 <script src="bg3d.js"></script>
 </body>
 </html>

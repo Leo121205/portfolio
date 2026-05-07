@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projets — Leo BIGOTE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Leo<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="projets.html" class="active">Projets</a></li>
+    <li><a href="index.html#blocs">Blocs</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-badge">Disponible • 2026</span>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Accueil</a>
+  <a href="competences.html">Compétences</a>
+  <a href="projets.html">Projets</a>
+  <a href="index.html#blocs">Blocs</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span>Projets</span>
+    </div>
+    <h1 class="page-title">Mes <span>projets</span></h1>
+    <p class="page-subtitle">10 projets réalisés en BTS SIO SISR — systèmes, réseaux, cloud, cybersécurité et développement.</p>
+    <div class="page-meta">
+      <span class="meta-badge done"><i class="fa-solid fa-circle-check"></i> 9 terminés</span>
+      <span class="meta-badge"><i class="fa-solid fa-clock"></i> 1 en cours</span>
+    </div>
+  </div>
+</div>
+
+<div class="projets-page">
+  <div class="projets-page-inner">
+    <div class="projets-grid">
+
+      <a href="projet-ad.html" class="projet-card reveal">
+        <div class="projet-card-header">
+          <span class="projet-card-num">01</span>
+          <div class="projet-card-icon"><i class="fa-solid fa-sitemap"></i></div>
+        </div>
+        <h3>Active Directory — efrei.local</h3>
+        <p>Mise en place d'un domaine Windows Server complet avec contrôleur de domaine, OU, utilisateurs, groupes et stratégies de groupe (GPO).</p>
+        <div class="projet-card-tags">
+          <span class="tag">Windows Server</span>
+          <span class="tag">AD DS</span>
+          <span class="tag">GPO</span>
+          <span class="tag">DNS</span>
+        </div>
+        <div class="projet-card-cta"><i class="fa-solid fa-arrow-right"></i> Voir le rapport</div>
+      </a>
+
+      <a href="projet-reseau.html" class="projet-card reveal">
+        <div class="projet-card-header">
+          <span class="projet-card-num">02</span>
+          <div class="projet-card-icon"><i class="fa-solid fa-network-wired"></i></div>
+        </div>
+        <h3>Réseau d'entreprise virtuel</h3>
+        <p>Déploiement d'une infrastructure réseau d'entreprise sous VirtualBox avec plan d'adressage, NAT et interconnexion multi-VMs.</p>
+        <div class="projet-card-tags">
+          <span class="tag">VirtualBox</span>
+          <span class="tag">TCP/IP</span>
+          <span class="tag">NAT</span>
+        </div>
+        <div class="projet-card-cta"><i class="fa-solid fa-arrow-right"></i> Voir le rapport</div>
+      </a>
+
+      <a href="projet-vlan.html" class="projet-card reveal">
+        <div class="projet-card-header">
+          <span class="projet-card-num">03</span>
+          <div class="projet-card-icon"><i class="fa-solid fa-diagram-project"></i></div>
+        </div>
+        <h3>Infrastructure VLAN Cisco</h3>
+        <p>Segmentation d'un réseau en VLANs sur switches Cisco avec routage inter-VLAN (router-on-a-stick) et ACL de sécurité.</p>
+        <div class="projet-card-tags">
+          <span class="tag">Cisco IOS</span>
+          <span class="tag">VLAN 802.1Q</span>
+          <span class="tag">Trunk</span>
+          <span class="tag">Packet Tracer</span>
+        </div>
+        <div class="projet-card-cta"><i class="fa-solid fa-arrow-right"></i> Voir le rapport</div>
+      </a>
+
+      <a href="projet-glpi.html" class="projet-card reveal">
+        <div class="projet-card-header">
+          <span class="projet-card-num">04</span>
+          <div class="projet-card-icon"><i class="fa-solid fa-ticket"></i></div>
+        </div>
+        <h3>GLPI — Gestion de parc</h3>
+        <p>Déploiement de GLPI sur Linux Debian avec stack LAMP pour la gestion des actifs informatiques, l'inventaire et le helpdesk.</p>
+        <div class="projet-card-tags">
+          <span class="tag">GLPI</span>
+          <span class="tag">Linux Debian</span>
+          <span class="tag">MariaDB</span>
+          <span class="tag">Apache</span>
+        </div>
+        <div class="projet-card-cta"><i class="fa-solid fa-arrow-right"></i> Voir le rapport</div>
+      </a>
+
+      <a href="projet-sauvegarde.html" class="projet-card reveal">
+        <div class="projet-card-header">
+          <span class="projet-card-num">05</span>
+          <div class="projet-card-icon"><i class="fa-solid fa-hard-drive"></i></div>
+        </div>
+        <h3>Plan de sauvegarde 3-2-1</h3>
+        <p>Mise en place d'une politique de sauvegarde selon la règle 3-2-1 avec scripts Robocopy, Azure Backup et procédures de restauration.</p>
+        <div class="projet-card-tags">
+          <span class="tag">Robocopy</span>
+          <span class="tag">Azure Backup</span>
+          <span class="tag">PowerShell</span>
+        </div>
+        <div class="projet-card-cta"><i class="fa-solid fa-arrow-right"></i> Voir le rapport</div>
+      </a>
+
+      <a href="projet-securite.html" class="projet-card reveal">
+        <div class="projet-card-header">
+          <span class="projet-card-num">06</span>
+          <div class="projet-card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        </div>
+        <h3>Analyse de vulnérabilités</h3>
+        <p>Exploitation et contre-mesures en lab isolé : MITM (ARP Poisoning), SQL Injection, XSS réfléchi/persistant, CSRF sur DVWA.</p>
+        <div class="projet-card-tags">
+          <span class="tag">Kali Linux</span>
+          <span class="tag">MITM</span>
+          <span class="tag">SQLi</span>
+          <span class="tag">XSS</span>
+        </div>
+        <div class="projet-card-cta"><i class="fa-solid fa-arrow-right"></i> Voir le rapport</div>
+      </a>
+
+      <a href="projet-azure.html" class="projet-card reveal">
+        <div class="projet-card-header">
+          <span class="projet-card-num">07</span>
+          <div class="projet-card-icon"><i class="fa-brands fa-microsoft"></i></div>
+        </div>
+        <h3>Infrastructure Cloud Azure</h3>
+        <p>Déploiement d'une infrastructure hybride sur Microsoft Azure : VMs, VNet, Azure AD Connect, Azure Backup et Azure Monitor.</p>
+        <div class="projet-card-tags">
+          <span class="tag">Azure</span>
+          <span class="tag">Azure AD</span>
+          <span class="tag">VNet</span>
+          <span class="tag">Azure Backup</span>
+        </div>
+        <div class="projet-card-cta"><i class="fa-solid fa-arrow-right"></i> Voir le rapport</div>
+      </a>
+
+      <a href="projet-serveur-web.html" class="projet-card reveal">
+        <div class="projet-card-header">
+          <span class="projet-card-num">08</span>
+          <div class="projet-card-icon"><i class="fa-brands fa-linux"></i></div>
+        </div>
+        <h3>Serveur web Linux (LAMP)</h3>
+        <p>Installation et configuration d'un serveur web Apache sur Linux Debian avec SSL Let's Encrypt, Fail2ban et déploiement d'application.</p>
+        <div class="projet-card-tags">
+          <span class="tag">Linux Debian</span>
+          <span class="tag">Apache</span>
+          <span class="tag">PHP</span>
+          <span class="tag">SSL/TLS</span>
+        </div>
+        <div class="projet-card-cta"><i class="fa-solid fa-arrow-right"></i> Voir le rapport</div>
+      </a>
+
+      <a href="projet-wifi.html" class="projet-card reveal">
+        <div class="projet-card-header">
+          <span class="projet-card-num">09</span>
+          <div class="projet-card-icon"><i class="fa-solid fa-wifi"></i></div>
+        </div>
+        <h3>Infrastructure WiFi sécurisée</h3>
+        <p>Déploiement et sécurisation d'un réseau sans fil professionnel avec WPA2-Enterprise, FreeRADIUS et portail captif invités.</p>
+        <div class="projet-card-tags">
+          <span class="tag">Wi-Fi 6</span>
+          <span class="tag">WPA2-Ent.</span>
+          <span class="tag">FreeRADIUS</span>
+        </div>
+        <div class="projet-card-cta"><i class="fa-solid fa-arrow-right"></i> Voir le rapport</div>
+      </a>
+
+      <a href="ecommerce.html" class="projet-card reveal coming-soon">
+        <div class="projet-card-header">
+          <span class="projet-card-num">10</span>
+          <div class="projet-card-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+        </div>
+        <h3>Projet E-commerce</h3>
+        <p>Projet e-commerce — rapport et détails en cours de rédaction.</p>
+        <div class="projet-card-tags">
+          <span class="tag">À venir</span>
+        </div>
+        <div class="projet-card-cta"><i class="fa-solid fa-clock"></i> En cours</div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<section id="contact" style="background: var(--surface); text-align:center;">
+  <div class="contact-inner">
+    <div class="section-label" style="justify-content:center;">Contact</div>
+    <h2 class="contact-title">Travaillons<br><span>ensemble.</span></h2>
+    <p class="contact-sub">À la recherche d'un stage ou d'une alternance en systèmes & réseaux / cybersécurité.</p>
+    <div class="contact-links">
+      <a href="mailto:leopakiam.bigote@gmail.com" class="contact-link primary"><i class="fa-solid fa-envelope"></i> leopakiam.bigote@gmail.com</a>
+      <a href="https://www.linkedin.com/in/leo-bigote/" target="_blank" class="contact-link"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      <a href="documents/CV Leo Alternance 2026.pdf" target="_blank" class="contact-link"><i class="fa-solid fa-file-pdf"></i> Mon CV</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Leo BIGOTE — BTS SIO SISR</span>
+  <div class="footer-links">
+    <a href="index.html">Accueil</a>
+    <a href="competences.html">Compétences</a>
+    <a href="https://github.com/Leo121205" target="_blank">GitHub</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

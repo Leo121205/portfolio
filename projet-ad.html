@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Active Directory — Leo BIGOTE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Leo<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="competences.html">Compétences</a></li>
+    <li><a href="projets.html" class="active">Projets</a></li>
+    <li><a href="index.html#blocs">Blocs</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-badge">Disponible • 2026</span>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Accueil</a>
+  <a href="competences.html">Compétences</a>
+  <a href="projets.html">Projets</a>
+  <a href="index.html#blocs">Blocs</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <a href="projets.html">Projets</a>
+      <i class="fa-solid fa-chevron-right"></i>
+      <span>Active Directory</span>
+    </div>
+    <h1 class="page-title">Active <span>Directory</span></h1>
+    <p class="page-subtitle">Mise en place d'un domaine Windows Server complet pour la gestion centralisée des utilisateurs et des ressources d'une PME fictive.</p>
+    <div class="page-meta">
+      <span class="meta-badge done"><i class="fa-solid fa-circle-check"></i> Terminé</span>
+      <span class="meta-badge"><i class="fa-regular fa-calendar"></i> BTS 1ère année — 2025</span>
+      <span class="meta-badge"><i class="fa-solid fa-tag"></i> Administration Systèmes</span>
+    </div>
+  </div>
+</div>
+
+<div class="report-wrapper">
+  <div class="report-inner">
+
+    <!-- SIDEBAR -->
+    <aside class="report-sidebar">
+      <div class="sidebar-card">
+        <h5>Informations</h5>
+        <div class="sidebar-info-item">
+          <i class="fa-solid fa-calendar"></i>
+          <span><strong>Période</strong>BTS 1ère année (2025)</span>
+        </div>
+        <div class="sidebar-info-item">
+          <i class="fa-solid fa-clock"></i>
+          <span><strong>Durée</strong>3 semaines</span>
+        </div>
+        <div class="sidebar-info-item">
+          <i class="fa-solid fa-user"></i>
+          <span><strong>Contexte</strong>Projet individuel — Lab EFREI</span>
+        </div>
+        <div class="sidebar-info-item">
+          <i class="fa-solid fa-circle-check"></i>
+          <span><strong>Statut</strong>Terminé ✓</span>
+        </div>
+      </div>
+      <div class="sidebar-card">
+        <h5>Technologies</h5>
+        <div class="sidebar-techs">
+          <span class="sidebar-tech">Windows Server 2022</span>
+          <span class="sidebar-tech">AD DS</span>
+          <span class="sidebar-tech">DNS intégré</span>
+          <span class="sidebar-tech">DHCP</span>
+          <span class="sidebar-tech">GPO</span>
+          <span class="sidebar-tech">VirtualBox</span>
+          <span class="sidebar-tech">Windows 10 Pro</span>
+        </div>
+      </div>
+      <!-- Ajouter le PDF dans documents/rapport-ad.pdf -->
+      <a href="documents/rapport-ad.pdf" class="btn-download" style="width:100%;justify-content:center;" target="_blank">
+        <i class="fa-solid fa-file-pdf"></i> Télécharger le rapport
+      </a>
+    </aside>
+
+    <!-- CONTENT -->
+    <div class="report-content">
+
+      <div class="report-section">
+        <h2><i class="fa-solid fa-circle-info"></i> Contexte & Objectifs</h2>
+        <p>Dans le cadre du BTS SIO option SISR, j'ai déployé une infrastructure <strong>Active Directory</strong> complète simulant l'environnement informatique d'une PME fictive nommée "EfreiCorp". L'objectif était de maîtriser la gestion centralisée des identités, des postes et des accès via un domaine Windows.</p>
+        <p>L'ensemble de l'infrastructure a été déployé en environnement virtuel sous <strong>VirtualBox</strong>, permettant de travailler en toute sécurité sans impact sur les systèmes de production.</p>
+        <h3>Objectifs pédagogiques</h3>
+        <ul>
+          <li>Installer et promouvoir un contrôleur de domaine Windows Server 2022</li>
+          <li>Créer et structurer une arborescence d'Unités d'Organisation (OU)</li>
+          <li>Gérer les comptes utilisateurs, groupes de sécurité et permissions NTFS</li>
+          <li>Déployer des stratégies de groupe (GPO) pour la sécurisation des postes</li>
+          <li>Joindre des postes clients au domaine et valider l'authentification centralisée</li>
+        </ul>
+      </div>
+
+      <div class="report-section">
+        <h2><i class="fa-solid fa-diagram-project"></i> Architecture</h2>
+        <h3>Plan d'adressage IP</h3>
+        <ul>
+          <li><strong>Serveur contrôleur de domaine :</strong> 192.168.10.1/24 (IP statique)</li>
+          <li><strong>Postes clients :</strong> 192.168.10.50–100 (DHCP géré par le serveur AD)</li>
+          <li><strong>Nom de domaine :</strong> efrei.local</li>
+          <li><strong>Réseau :</strong> Adaptateur Host-only VirtualBox (192.168.10.0/24)</li>
+        </ul>
+        <h3>Structure organisationnelle (OU)</h3>
+        <ul>
+          <li><strong>OU_Direction</strong> — Directeurs et cadres (accès complet aux ressources partagées)</li>
+          <li><strong>OU_Informatique</strong> — Administrateurs IT (membres du groupe Domain Admins local)</li>
+          <li><strong>OU_RessourcesHumaines</strong> — Service RH (accès restreint aux dossiers confidentiels)</li>
+          <li><strong>OU_Marketing</strong> — Équipe marketing (accès aux partages créatifs)</li>
+          <li><strong>OU_Ordinateurs</strong> — Tous les postes joints au domaine</li>
+        </ul>
+      </div>
+
+      <div class="report-section">
+        <h2><i class="fa-solid fa-list-check"></i> Étapes de réalisation</h2>
+        <ol class="step-list">
+          <li>
+            <div class="step-content">
+              <strong>Installation de Windows Server 2022 sur VirtualBox</strong>
+              <p>Création d'une VM avec 4 Go RAM, 2 vCPU, 60 Go disque. Installation de la version Evaluation de Windows Server 2022 (Desktop Experience). Configuration de l'adaptateur réseau Host-only.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Configuration réseau et IP statique</strong>
+              <p>Attribution de l'IP 192.168.10.1/24, passerelle 192.168.10.1, DNS pointant sur lui-même (127.0.0.1). Renommage du serveur en "DC01-EFREI".</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Installation du rôle AD DS et DNS</strong>
+              <p>Via le Gestionnaire de serveur → Ajouter des rôles → Active Directory Domain Services + DNS Server. Installation des outils d'administration RSAT.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Promotion en contrôleur de domaine</strong>
+              <p>Assistant de configuration : "Ajouter une nouvelle forêt" → Nom de domaine racine : efrei.local → Niveau fonctionnel Windows Server 2016 → Définition du mot de passe DSRM → Installation et redémarrage.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Création de la structure OU</strong>
+              <p>Via Active Directory Users and Computers (ADUC) : création des 5 Unités d'Organisation. Application du principe de délégation administrative pour chaque OU.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Création des comptes utilisateurs et groupes</strong>
+              <p>20 comptes utilisateurs répartis dans les OU. Groupes de sécurité : GRP_Admins, GRP_RH, GRP_Marketing, GRP_Direction. Attribution des appartenances et des permissions sur les partages réseau (NTFS + Partage).</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Configuration des GPO</strong>
+              <p>GPO_MotDePasse : longueur minimale 12 car., complexité activée, verrouillage après 5 tentatives. GPO_Bureau : fond d'écran imposé, désactivation du Panneau de configuration. GPO_Redirection : redirection du dossier Documents vers le partage réseau \\DC01-EFREI\Profils$.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Jonction des postes clients au domaine</strong>
+              <p>Création d'une VM Windows 10 Pro. Configuration DNS pointant vers DC01-EFREI (192.168.10.1). Jonction au domaine efrei.local via Propriétés système → Modification du nom d'ordinateur → Domaine. Authentification réussie avec les comptes du domaine.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-content">
+              <strong>Tests et validation</strong>
+              <p>Connexion avec différents comptes utilisateurs, vérification des GPO appliquées (gpresult /r), test de la redirection des dossiers, vérification des permissions NTFS, tests de verrouillage de compte.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="report-section">
+        <h2><i class="fa-solid fa-chart-bar"></i> Résultats</h2>
+        <div class="result-grid">
+          <div class="result-card">
+            <i class="fa-solid fa-users"></i>
+            <strong>20</strong>
+            <span>Comptes créés</span>
+          </div>
+          <div class="result-card">
+            <i class="fa-solid fa-folder-tree"></i>
+            <strong>5</strong>
+            <span>OU structurées</span>
+          </div>
+          <div class="result-card">
+            <i class="fa-solid fa-scroll"></i>
+            <strong>3</strong>
+            <span>GPO déployées</span>
+          </div>
+          <div class="result-card">
+            <i class="fa-solid fa-desktop"></i>
+            <strong>2</strong>
+            <span>Postes joints</span>
+          </div>
+        </div>
+        <p style="margin-top:1.5rem;">L'infrastructure Active Directory efrei.local est pleinement opérationnelle. Les utilisateurs s'authentifient sur le domaine depuis les postes clients, les GPO sont correctement appliquées (vérifiées via <code style="color:var(--accent);font-size:0.85em;">gpresult /r</code>), et les redirections de dossiers fonctionnent comme attendu.</p>
+      </div>
+
+      <div class="report-section">
+        <h2><i class="fa-solid fa-lightbulb"></i> Ce que j'ai appris</h2>
+        <div class="learned-grid">
+          <div class="learned-item">
+            <i class="fa-solid fa-check"></i>
+            <p>Architecture et rôles d'un domaine Active Directory (DC, FSMO, catalogue global)</p>
+          </div>
+          <div class="learned-item">
+            <i class="fa-solid fa-check"></i>
+            <p>Conception d'une structure OU adaptée à l'organigramme d'une entreprise</p>
+          </div>
+          <div class="learned-item">
+            <i class="fa-solid fa-check"></i>
+            <p>Gestion fine des permissions : héritage NTFS, groupes imbriqués, principe du moindre privilège</p>
+          </div>
+          <div class="learned-item">
+            <i class="fa-solid fa-check"></i>
+            <p>Déploiement et débogage des GPO (gpupdate, gpresult, Event Viewer)</p>
+          </div>
+          <div class="learned-item">
+            <i class="fa-solid fa-check"></i>
+            <p>Intégration de postes clients et gestion des profils itinérants</p>
+          </div>
+          <div class="learned-item">
+            <i class="fa-solid fa-check"></i>
+            <p>Importance de la documentation pour la maintenabilité d'une infra AD</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="report-section">
+        <h2><i class="fa-solid fa-file-pdf"></i> Documentation</h2>
+        <div class="placeholder-box">
+          <i class="fa-solid fa-file-arrow-down"></i>
+          <!-- Ajouter le PDF dans documents/rapport-ad.pdf -->
+          <p>Rapport complet PDF à venir</p>
+          <a href="documents/rapport-ad.pdf" class="btn-download" style="margin-top:1rem;display:inline-flex;" target="_blank">
+            <i class="fa-solid fa-file-pdf"></i> Télécharger le rapport complet
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 Leo BIGOTE — BTS SIO SISR</span>
+  <div class="footer-links">
+    <a href="projets.html"><i class="fa-solid fa-arrow-left"></i> Tous les projets</a>
+    <a href="projet-reseau.html">Projet suivant <i class="fa-solid fa-arrow-right"></i></a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
